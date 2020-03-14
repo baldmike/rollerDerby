@@ -29,8 +29,8 @@
                 
             },
         },
-        created() {
-            
+        mounted() {
+            axios.get('/api/users')
         }
     }
 </script>
@@ -38,8 +38,9 @@
 <style lang="scss" scoped>
     @import "../../sass/_variables.scss";
 
-    // .mainPlace {
-    //     background-color: $blue;
-    // }
+    .mainPlace {
+        background-color: $test;
+        color: black;
+    }
     
 </style>

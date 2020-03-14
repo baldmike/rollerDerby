@@ -17,8 +17,8 @@ export default new Vuex.Store({
 
         let currentUser = JSON.stringify(user);
 
-        console.log("[STORE.STATE] --> user: " + (currentUser));
-        console.log("[STORE.STATE] --> token: " + (userToken));
+        // console.log("[STORE.STATE] --> user: " + (currentUser));
+        // console.log("[STORE.STATE] --> token: " + (userToken));
 
         return {
             token: userToken ? userToken : null,
