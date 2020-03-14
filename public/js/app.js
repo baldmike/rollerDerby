@@ -1851,7 +1851,7 @@ __webpack_require__.r(__webpack_exports__);
           group: 'notifications',
           type: 'success',
           title: 'Success!',
-          text: 'You are now logged in',
+          text: data.user.name + ' is now logged in',
           duration: '15000',
           width: '100%'
         });

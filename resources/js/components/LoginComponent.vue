@@ -85,7 +85,7 @@ export default {
 
                 this.$cookie.set('token', data.token)
                 this.$cookie.set('user', data.user.email)
-                
+
                 auth.setAuthToken(data.token)
                 auth.login(data.token, data.user.email);
         
@@ -95,7 +95,7 @@ export default {
                     group: 'notifications',
                     type: 'success',
                     title: 'Success!',
-                    text: 'You are now logged in',
+                    text: data.user.name + ' is now logged in',
                     duration: '15000',
                     width: '100%'
                 });
