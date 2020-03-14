@@ -21,6 +21,8 @@ $factory->define(App\Models\User::class, function (Faker $faker) {
                 'user', 'admin', 'volunteer'
             ]
         ),
+        'phone' => $faker->unique()->phoneNumber,
+        'profile-image' => 'http://via.placeholder.com/150',
         'email' => $faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'password' => bcrypt('password'),
