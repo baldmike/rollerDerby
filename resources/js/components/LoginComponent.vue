@@ -62,6 +62,7 @@ export default {
         form: {
             password: {
                 required,
+                minLength: minLength(8),
             },
             email: {
                 required,
@@ -78,13 +79,13 @@ export default {
                 password: this.form.password,
             };
             
-            // this is out of scope in catch -- set this to self
             let self=this;
 
             axios.post("/api/login", formData).then(({data}) => {
 
                 this.$cookie.set('token', data.token)
                 this.$cookie.set('user', data.user.email)
+                
                 auth.setAuthToken(data.token)
                 auth.login(data.token, data.user.email);
         
