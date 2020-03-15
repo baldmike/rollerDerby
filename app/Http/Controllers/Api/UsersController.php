@@ -8,9 +8,15 @@ use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use App\Models\User;
 
 class UsersController extends Controller
 {
+    public function index() 
+    {
+        return new UserResource(User::all());
+    }
+
     /**
      *
      * @return \App\Models\User

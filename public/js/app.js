@@ -1730,18 +1730,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'dashboard',
   components: {},
   data: function data() {
-    return {};
+    return {
+      user: null,
+      users: [],
+      fields: [{
+        key: 'name',
+        sortable: true
+      }, {
+        key: 'role',
+        sortable: true
+      }, {
+        key: 'email',
+        sortable: true
+      }]
+    };
   },
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['isAuthenticated', 'currentUser']),
   methods: {
     init: function init() {}
   },
-  created: function created() {}
+  created: function created() {
+    var _this = this;
+
+    axios.get('/api/user').then(function (response) {
+      _this.user = response.data.data;
+    });
+    axios.get('/api/users').then(function (response) {
+      _this.users = response.data.data;
+    });
+  }
 });
 
 /***/ }),
@@ -29047,9 +29071,17 @@ if(false) {}
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/lib/loader.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/DashboardComponent.vue?vue&type=style&index=0&id=01ab55f4&lang=scss&scoped=true& ***!
   \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/sass-loader/lib/loader.js):\n\n$blue: #3490dc;\n    ^\n      Expected \";\".\n   ╷\n12 │ $blue: #3490dc;\n   │      ^\n   ╵\n  resources/sass/_variables.scss 12:6  @import\n  stdin 39:9                           root stylesheet\n      in /Users/michaelschieber/Desktop/repos/rollerDerby/resources/sass/_variables.scss (line 12, column 6)");
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
 
 /***/ }),
 
@@ -50823,7 +50855,31 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "mainPlace" },
-    [_c("b-row", [_c("b-col", [_c("h1", [_vm._v("HELLO, WORLD")])])], 1)],
+    [
+      _c(
+        "b-row",
+        [
+          _c(
+            "b-col",
+            [
+              this.user.role == "admin"
+                ? _c("b-table", {
+                    attrs: {
+                      striped: "",
+                      hover: "",
+                      items: _vm.users,
+                      fields: _vm.fields
+                    }
+                  })
+                : _vm._e(),
+              _vm._v("\n\n            " + _vm._s(_vm.user) + "\n        ")
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
     1
   )
 }
@@ -75405,9 +75461,9 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_cookie__WEBPACK_IMPORTED_MODU
   state: function state() {
     var userToken = vue__WEBPACK_IMPORTED_MODULE_0___default.a.cookie.get('token');
     var user = vue__WEBPACK_IMPORTED_MODULE_0___default.a.cookie.get('user');
-    var currentUser = JSON.stringify(user);
-    console.log("[STORE.STATE] --> user: " + currentUser);
-    console.log("[STORE.STATE] --> token: " + userToken);
+    var currentUser = JSON.stringify(user); // console.log("[STORE.STATE] --> user: " + (currentUser));
+    // console.log("[STORE.STATE] --> token: " + (userToken));
+
     return {
       token: userToken ? userToken : null,
       user: user ? user : null
@@ -75475,7 +75531,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_cookie__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/lib/loader.js):\n\n$blue: #3490dc;\n    ^\n      Expected \";\".\n   ╷\n12 │ $blue: #3490dc;\n   │      ^\n   ╵\n  resources/sass/_variables.scss 12:6  @import\n  stdin 6:9                            root stylesheet\n      in /Users/michaelschieber/Desktop/repos/rollerDerby/resources/sass/_variables.scss (line 12, column 6)\n    at /Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/webpack/lib/NormalModule.js:313:20\n    at /Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/loader-runner/lib/LoaderRunner.js:367:11\n    at /Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/loader-runner/lib/LoaderRunner.js:233:18\n    at context.callback (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at /Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass-loader/lib/loader.js:52:13\n    at Function.call$2 (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:53412:16)\n    at _render_closure1.call$2 (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:33231:12)\n    at _RootZone.runBinary$3$3 (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:19633:18)\n    at _RootZone.runBinary$3 (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:19637:19)\n    at _FutureListener.handleError$1 (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:18105:19)\n    at _Future__propagateToListeners_handleError.call$0 (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:18390:40)\n    at Object._Future__propagateToListeners (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:3449:88)\n    at _Future._completeError$2 (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:18226:9)\n    at _SyncCompleter._completeError$2 (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:18092:19)\n    at _SyncCompleter.completeError$2 (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:18061:12)\n    at _AsyncAwaitCompleter.completeError$2 (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:17598:25)\n    at Object._asyncRethrow (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:3205:17)\n    at /Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:10386:20\n    at _wrapJsFunctionForAsync_closure.$protected (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:3228:15)\n    at _wrapJsFunctionForAsync_closure.call$2 (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:17633:12)\n    at _awaitOnObject_closure0.call$2 (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:17625:25)\n    at _RootZone.runBinary$3$3 (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:19633:18)\n    at _RootZone.runBinary$3 (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:19637:19)\n    at _FutureListener.handleError$1 (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:18105:19)\n    at _Future__propagateToListeners_handleError.call$0 (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:18390:40)\n    at Object._Future__propagateToListeners (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:3449:88)\n    at _Future._completeError$2 (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:18226:9)\n    at _SyncCompleter._completeError$2 (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:18092:19)\n    at _SyncCompleter.completeError$2 (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:18061:12)\n    at Object.eval (eval at Closure_forwardCallTo (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:1:1), <anonymous>:1:41)\n    at _RootZone.runBinary$3$3 (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:19633:18)\n    at _RootZone.runBinary$3 (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:19637:19)\n    at _FutureListener.handleError$1 (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:18105:19)\n    at _Future__propagateToListeners_handleError.call$0 (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:18390:40)\n    at Object._Future__propagateToListeners (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:3449:88)\n    at _Future._completeError$2 (/Users/michaelschieber/Desktop/repos/rollerDerby/node_modules/sass/sass.dart.js:18226:9)");
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 
