@@ -8,7 +8,7 @@
 
         <b-row>
             <b-col>
-                <router-link v-if="currentUser.role='admin'" to="shop">Add Item</router-link>
+                <router-link v-if="currentUser.role='admin'" to="add-item">Add Item</router-link>
             </b-col>
         </b-row>
     </div>
