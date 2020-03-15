@@ -34,6 +34,11 @@
         
         computed: mapGetters(['isAuthenticated', 'currentUser']),
             
+            routeName() {
+                console.log("ROUTE: " + this.$route.name)
+                return this.$route.name;
+            }
+            
     }
 </script>
 

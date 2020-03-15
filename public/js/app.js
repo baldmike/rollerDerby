@@ -1725,7 +1725,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      form: {
+        itemName: '',
+        itemDescription: '',
+        itemSize: '',
+        itemPrice: null
+      }
+    };
+  }
+});
 
 /***/ }),
 
@@ -1958,7 +1984,11 @@ __webpack_require__.r(__webpack_exports__);
       this.$store.dispatch('logout');
     }
   },
-  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['isAuthenticated', 'currentUser'])
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['isAuthenticated', 'currentUser']),
+  routeName: function routeName() {
+    console.log("ROUTE: " + this.$route.name);
+    return this.$route.name;
+  }
 });
 
 /***/ }),
@@ -50962,7 +50992,46 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("form")
+  return _c(
+    "b-form",
+    [
+      _c(
+        "b-form-group",
+        { attrs: { label: "Item Name" } },
+        [
+          _c("b-form-input", {
+            model: {
+              value: _vm.form.itemName,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "itemName", $$v)
+              },
+              expression: "form.itemName"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "b-form-group",
+        { attrs: { label: "Item Description" } },
+        [
+          _c("b-form-textarea", {
+            attrs: { rows: "3", "max-rows": "6" },
+            model: {
+              value: _vm.form.itemDescription,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "itemDescription", $$v)
+              },
+              expression: "form.itemDescription"
+            }
+          })
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
