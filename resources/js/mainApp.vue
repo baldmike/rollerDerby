@@ -21,9 +21,8 @@
         computed: mapGetters(['isAuthenticated']),
         methods: mapActions(['login']),
         mounted() {
-            if (window.auth.check()) {
-                this.$router.push('dashboard');
-            }
+            
+            
         }
     }
 
