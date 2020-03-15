@@ -4,7 +4,7 @@
             <b-col>
                 <b-table v-if="this.user.role == 'admin'" striped hover :items="users" :fields="fields"></b-table>
 
-                {{ user }}
+                {{ currentUser }}
             </b-col>
         </b-row>
     </div>
@@ -56,6 +56,8 @@
             axios.get('/api/users').then((response) => {
                 this.users = response.data.data;
             });
+
+            this.$store.dispatch('refreshUserData');
         }
     }
 </script>

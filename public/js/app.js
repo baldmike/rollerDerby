@@ -1765,6 +1765,7 @@ __webpack_require__.r(__webpack_exports__);
     axios.get('/api/users').then(function (response) {
       _this.users = response.data.data;
     });
+    this.$store.dispatch('refreshUserData');
   }
 });
 
@@ -50872,7 +50873,9 @@ var render = function() {
                     }
                   })
                 : _vm._e(),
-              _vm._v("\n\n            " + _vm._s(_vm.user) + "\n        ")
+              _vm._v(
+                "\n\n            " + _vm._s(_vm.currentUser) + "\n        "
+              )
             ],
             1
           )
@@ -75460,13 +75463,14 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_cookie__WEBPACK_IMPORTED_MODU
 /* harmony default export */ __webpack_exports__["default"] = (new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   state: function state() {
     var userToken = vue__WEBPACK_IMPORTED_MODULE_0___default.a.cookie.get('token');
-    var user = vue__WEBPACK_IMPORTED_MODULE_0___default.a.cookie.get('user');
-    var currentUser = JSON.stringify(user); // console.log("[STORE.STATE] --> user: " + (currentUser));
+    var user = vue__WEBPACK_IMPORTED_MODULE_0___default.a.cookie.get('user'); // let currentUser = JSON.stringify(user);
+    // console.log("[STORE.STATE] --> user: " + (currentUser));
     // console.log("[STORE.STATE] --> token: " + (userToken));
 
     return {
       token: userToken ? userToken : null,
-      user: user ? user : null
+      user: user ? user : null,
+      currentUser: null
     };
   },
   getters: {
@@ -75476,7 +75480,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_cookie__WEBPACK_IMPORTED_MODU
       return !!state.token;
     },
     currentUser: function currentUser(state) {
-      return state.user;
+      return state.currentUser;
     }
   },
   mutations: {
@@ -75488,7 +75492,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_cookie__WEBPACK_IMPORTED_MODU
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + payload.token;
     },
     setUser: function setUser(state, user) {
-      state.user = user;
+      state.currentUser = user;
     },
     logout: function logout(state) {
       state.token = null;

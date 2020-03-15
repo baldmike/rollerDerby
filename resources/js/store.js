@@ -15,7 +15,7 @@ export default new Vuex.Store({
         let userToken = Vue.cookie.get('token');
         let user = Vue.cookie.get('user');
 
-        let currentUser = JSON.stringify(user);
+        // let currentUser = JSON.stringify(user);
 
         // console.log("[STORE.STATE] --> user: " + (currentUser));
         // console.log("[STORE.STATE] --> token: " + (userToken));
@@ -23,6 +23,7 @@ export default new Vuex.Store({
         return {
             token: userToken ? userToken : null,
             user: user ? user : null,
+            currentUser: null,
         }
     },
     getters: { 
@@ -30,7 +31,7 @@ export default new Vuex.Store({
 
         // !! returns boolean  --  if there is a token, the user is authenticated
         isAuthenticated: state => !!state.token,
-        currentUser: state => state.user,
+        currentUser: state => state.currentUser,
     },
     mutations: {
         // mutations are committed by actions, and are the ONLY way to manipulate state
@@ -42,7 +43,7 @@ export default new Vuex.Store({
             axios.defaults.headers.common['Authorization'] = 'Bearer ' + payload.token
         },
         setUser(state, user) {
-            state.user = user;
+            state.currentUser = user;
         },
         logout(state) {
             state.token = null;
