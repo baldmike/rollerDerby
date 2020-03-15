@@ -2,7 +2,13 @@
     <div class="mainPlace">
         <b-row>
             <b-col>
-                <b-table v-if="this.currentUser.role == 'admin'" striped hover :items="[currentUser]" :fields="fields"></b-table>
+                <b-table v-if="currentUser.role == 'admin'" striped hover :items="[currentUser]" :fields="fields"></b-table>
+            </b-col>
+        </b-row>
+
+        <b-row>
+            <b-col>
+                <router-link v-if="currentUser.role='admin'" to="shop">Add Item</router-link>
             </b-col>
         </b-row>
     </div>

@@ -1730,6 +1730,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'dashboard',
@@ -50947,7 +50953,7 @@ var render = function() {
           _c(
             "b-col",
             [
-              this.currentUser.role == "admin"
+              _vm.currentUser.role == "admin"
                 ? _c("b-table", {
                     attrs: {
                       striped: "",
@@ -50956,6 +50962,24 @@ var render = function() {
                       fields: _vm.fields
                     }
                   })
+                : _vm._e()
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "b-row",
+        [
+          _c(
+            "b-col",
+            [
+              (_vm.currentUser.role = "admin")
+                ? _c("router-link", { attrs: { to: "shop" } }, [
+                    _vm._v("Add Item")
+                  ])
                 : _vm._e()
             ],
             1
@@ -51149,7 +51173,7 @@ var render = function() {
           _c("b-navbar-toggle", { attrs: { target: "nav_collapse" } }),
           _vm._v(" "),
           _c("b-navbar-brand", { attrs: { to: "/dashboard" } }, [
-            _vm._v(_vm._s(_vm.currentUser.name))
+            _vm._v("Dashboard")
           ]),
           _vm._v(" "),
           _c(
