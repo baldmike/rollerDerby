@@ -1730,19 +1730,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'dashboard',
   components: {},
   data: function data() {
-    return {};
+    return {
+      user: null,
+      users: [],
+      fields: [{
+        key: 'name',
+        sortable: true
+      }, {
+        key: 'role',
+        sortable: true
+      }, {
+        key: 'email',
+        sortable: true
+      }]
+    };
   },
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['isAuthenticated', 'currentUser']),
   methods: {
     init: function init() {}
   },
-  mounted: function mounted() {
-    axios.get('/api/users');
+  created: function created() {
+    var _this = this;
+
+    axios.get('/api/user').then(function (response) {
+      _this.user = response.data.data;
+    });
+    axios.get('/api/users').then(function (response) {
+      _this.users = response.data.data;
+    });
   }
 });
 
@@ -29056,7 +29078,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".mainPlace[data-v-01ab55f4] {\n  background-color: #f33d9a;\n  color: black;\n}", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -50833,7 +50855,31 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "mainPlace" },
-    [_c("b-row", [_c("b-col", [_c("h1", [_vm._v("HELLO, WORLD")])])], 1)],
+    [
+      _c(
+        "b-row",
+        [
+          _c(
+            "b-col",
+            [
+              this.user.role == "admin"
+                ? _c("b-table", {
+                    attrs: {
+                      striped: "",
+                      hover: "",
+                      items: _vm.users,
+                      fields: _vm.fields
+                    }
+                  })
+                : _vm._e(),
+              _vm._v("\n\n            " + _vm._s(_vm.user) + "\n        ")
+            ],
+            1
+          )
+        ],
+        1
+      )
+    ],
     1
   )
 }

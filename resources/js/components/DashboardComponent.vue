@@ -2,7 +2,9 @@
     <div class="mainPlace">
         <b-row>
             <b-col>
-                <h1>HELLO, WORLD</h1>
+                <b-table v-if="this.user.role == 'admin'" striped hover :items="users" :fields="fields"></b-table>
+
+                {{ user }}
             </b-col>
         </b-row>
     </div>
@@ -20,17 +22,40 @@
         },
         data() {
             return {
-                
+                user: null,
+                users: [],
+
+                fields: [
+                    {
+                        key: 'name',
+                        sortable: true
+                    },
+                    {
+                        key: 'role',
+                        sortable: true
+                    },
+                    {
+                        key: 'email',
+                        sortable: true
+                    },
+                ]
             }
         },
+
         computed: mapGetters(['isAuthenticated', 'currentUser']),
         methods: {
             init() {
                 
             },
         },
-        mounted() {
-            axios.get('/api/users')
+        created() {
+            axios.get('/api/user').then((response) => {
+                this.user = response.data.data;
+            })
+
+            axios.get('/api/users').then((response) => {
+                this.users = response.data.data;
+            });
         }
     }
 </script>
@@ -38,9 +63,9 @@
 <style lang="scss" scoped>
     @import "../../sass/_variables.scss";
 
-    .mainPlace {
-        background-color: $test;
-        color: black;
-    }
+    // .mainPlace {
+    //     background-color: $test;
+    //     color: black;
+    // }
     
 </style>
