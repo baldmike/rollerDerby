@@ -2,9 +2,9 @@
     <div class="mainPlace">
         <b-row>
             <b-col>
-                <b-table v-if="this.currentUser.role == 'admin'" striped hover :items="users" :fields="fields"></b-table>
+                <h1>Shop Component</h1>
 
-                {{ currentUser.name }}
+                {{ currentUser }}
             </b-col>
         </b-row>
     </div>
@@ -23,21 +23,6 @@
         data() {
             return {
                 users: [],
-
-                fields: [
-                    {
-                        key: 'name',
-                        sortable: true
-                    },
-                    {
-                        key: 'role',
-                        sortable: true
-                    },
-                    {
-                        key: 'email',
-                        sortable: true
-                    },
-                ]
             }
         },
 
@@ -51,8 +36,6 @@
             axios.get('/api/users').then((response) => {
                 this.users = response.data.data;
             });
-
-            this.$store.dispatch('refreshUserData');
         }
     }
 </script>

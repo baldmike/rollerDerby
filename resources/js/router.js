@@ -3,6 +3,7 @@ import store from './store'
 
 import mainApp from './mainApp'
 import DashboardComponent from './components/DashboardComponent'
+import ShopComponent from './components/ShopComponent'
 import LoginComponent from './components/LoginComponent'
 
 export const router = new VueRouter({ 
@@ -27,6 +28,11 @@ export const router = new VueRouter({
                         }
                         next();
                     }
+                },
+
+                {
+                    path: 'shop',
+                    component: ShopComponent,
                 },
             ]
         },
