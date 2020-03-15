@@ -2,9 +2,7 @@
     <div class="mainPlace">
         <b-row>
             <b-col>
-                <b-table v-if="this.currentUser.role == 'admin'" striped hover :items="users" :fields="fields"></b-table>
-
-                {{ currentUser.name }}
+                <b-table v-if="this.currentUser.role == 'admin'" striped hover :items="[currentUser]" :fields="fields"></b-table>
             </b-col>
         </b-row>
     </div>

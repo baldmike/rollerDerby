@@ -1730,8 +1730,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'dashboard',
@@ -1927,7 +1925,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NavBar",
@@ -1936,7 +1933,7 @@ __webpack_require__.r(__webpack_exports__);
       this.$store.dispatch('logout');
     }
   },
-  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['isAuthenticated'])
+  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['isAuthenticated', 'currentUser'])
 });
 
 /***/ }),
@@ -50955,14 +50952,11 @@ var render = function() {
                     attrs: {
                       striped: "",
                       hover: "",
-                      items: _vm.users,
+                      items: [_vm.currentUser],
                       fields: _vm.fields
                     }
                   })
-                : _vm._e(),
-              _vm._v(
-                "\n\n            " + _vm._s(_vm.currentUser.name) + "\n        "
-              )
+                : _vm._e()
             ],
             1
           )
@@ -51155,7 +51149,7 @@ var render = function() {
           _c("b-navbar-toggle", { attrs: { target: "nav_collapse" } }),
           _vm._v(" "),
           _c("b-navbar-brand", { attrs: { to: "/dashboard" } }, [
-            _vm._v("Home")
+            _vm._v(_vm._s(_vm.currentUser.name))
           ]),
           _vm._v(" "),
           _c(
@@ -51166,11 +51160,8 @@ var render = function() {
                 "b-navbar-nav",
                 [
                   _vm.isAuthenticated
-                    ? _c("b-nav-item", { attrs: { to: "#" } }, [
-                        _c("i", {
-                          staticClass: "fas fa-plus",
-                          staticStyle: { "font-size": "1.5rem" }
-                        })
+                    ? _c("b-nav-item", { attrs: { to: "shop" } }, [
+                        _vm._v("Shop")
                       ])
                     : _vm._e()
                 ],
