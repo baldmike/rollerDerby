@@ -4,7 +4,7 @@
             <b-col>
                 <h1>Shop Component</h1>
 
-                {{ currentUser }}
+                {{ items }}
             </b-col>
         </b-row>
     </div>
@@ -22,7 +22,7 @@
         },
         data() {
             return {
-                users: [],
+                items: [],
             }
         },
 
@@ -33,8 +33,8 @@
             },
         },
         created() {
-            axios.get('/api/users').then((response) => {
-                this.users = response.data.data;
+            axios.get('/api/items').then((response) => {
+                this.items = response.data.data;
             });
         }
     }

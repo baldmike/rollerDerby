@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Item;
 use Illuminate\Http\Request;
+use App\Http\Resources\ItemResource;
+use App\Http\Controllers\Controller;
 
-class ItemController extends Controller
+class ItemsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +16,7 @@ class ItemController extends Controller
      */
     public function index()
     {
-        //
+        return new ItemResource(Item::all());
     }
 
     /**

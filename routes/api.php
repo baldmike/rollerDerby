@@ -23,6 +23,7 @@ Route::middleware('auth:api')->group(function () {
     
     Route::get('/user', 'Api\UsersController@current');
     Route::get('/users', 'Api\UsersController@index');
+    Route::get('/items', 'Api\ItemsController@index');
     
 });
 

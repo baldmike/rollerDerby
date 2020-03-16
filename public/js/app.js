@@ -2040,7 +2040,7 @@ __webpack_require__.r(__webpack_exports__);
   components: {},
   data: function data() {
     return {
-      users: []
+      items: []
     };
   },
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['isAuthenticated', 'currentUser']),
@@ -2050,8 +2050,8 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('/api/users').then(function (response) {
-      _this.users = response.data.data;
+    axios.get('/api/items').then(function (response) {
+      _this.items = response.data.data;
     });
   }
 });
@@ -51385,7 +51385,7 @@ var render = function() {
         [
           _c("b-col", [
             _c("h1", [_vm._v("Shop Component")]),
-            _vm._v("\n\n            " + _vm._s(_vm.currentUser) + "\n        ")
+            _vm._v("\n\n            " + _vm._s(_vm.items) + "\n        ")
           ])
         ],
         1
