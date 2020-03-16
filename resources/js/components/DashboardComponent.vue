@@ -1,5 +1,5 @@
 <template>
-    <div class="mainPlace">
+    <b-container>
         <b-row>
             <b-col>
                 <b-table v-if="currentUser.role == 'admin'" striped hover :items="[currentUser]" :fields="fields"></b-table>
@@ -11,7 +11,7 @@
                 <router-link v-if="currentUser.role='admin'" to="add-item">Add Item</router-link>
             </b-col>
         </b-row>
-    </div>
+    </b-container>
 </template>
 
 <script>

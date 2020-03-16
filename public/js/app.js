@@ -51056,8 +51056,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
-    { staticClass: "mainPlace" },
+    "b-container",
     [
       _c(
         "b-row",
@@ -51377,16 +51376,32 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
-    { staticClass: "mainPlace" },
+    "b-container",
     [
       _c(
         "b-row",
         [
-          _c("b-col", [
-            _c("h1", [_vm._v("Shop Component")]),
-            _vm._v("\n\n            " + _vm._s(_vm.items) + "\n        ")
-          ])
+          _c(
+            "b-col",
+            [
+              _c(
+                "b-card",
+                _vm._l(_vm.items, function(item) {
+                  return _c("p", { key: item }, [
+                    _vm._v(
+                      _vm._s(item.name) +
+                        ", " +
+                        _vm._s(item.description) +
+                        ", $" +
+                        _vm._s(item.price)
+                    )
+                  ])
+                }),
+                0
+              )
+            ],
+            1
+          )
         ],
         1
       )

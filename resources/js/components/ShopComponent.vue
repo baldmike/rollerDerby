@@ -1,13 +1,13 @@
 <template>
-    <div class="mainPlace">
+    <b-container>
         <b-row>
             <b-col>
-                <h1>Shop Component</h1>
-
-                {{ items }}
+                <b-card>
+                    <p v-for="item in items" :key='item'>{{ item.name }}, {{ item.description }}, ${{ item.price }}</p>
+                </b-card>
             </b-col>
         </b-row>
-    </div>
+    </b-container>
 </template>
 
 <script>
