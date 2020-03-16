@@ -1740,6 +1740,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -51028,6 +51037,19 @@ var render = function() {
           })
         ],
         1
+      ),
+      _vm._v(" "),
+      _c(
+        "b-form-group",
+        { attrs: { label: "Item Price" } },
+        [
+          _c("b-form-input", [
+            _vm._v(
+              '\n            v-model="form.itemPrice"\n            >\n        '
+            )
+          ])
+        ],
+        1
       )
     ],
     1
@@ -51383,23 +51405,16 @@ var render = function() {
         [
           _c(
             "b-col",
-            [
-              _c(
-                "b-card",
-                _vm._l(_vm.items, function(item) {
-                  return _c("p", { key: item }, [
-                    _vm._v(
-                      _vm._s(item.name) +
-                        ", " +
-                        _vm._s(item.description) +
-                        ", $" +
-                        _vm._s(item.price)
-                    )
-                  ])
-                }),
-                0
-              )
-            ],
+            _vm._l(_vm.items, function(item) {
+              return _c("b-card", { key: item }, [
+                _c("p", [
+                  _c("strong", [_vm._v(_vm._s(item.name))]),
+                  _vm._v(
+                    ", " + _vm._s(item.description) + ", $" + _vm._s(item.price)
+                  )
+                ])
+              ])
+            }),
             1
           )
         ],
@@ -75991,8 +76006,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_cookie__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/baldmike/Documents/projects_laravel/rollerDerby/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/baldmike/Documents/projects_laravel/rollerDerby/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/michaelschieber/Desktop/repos/rollerDerby/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/michaelschieber/Desktop/repos/rollerDerby/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

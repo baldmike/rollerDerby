@@ -16,6 +16,15 @@
             </b-form-textarea>
         </b-form-group>
 
+        <b-form-group
+            label="Item Price">
+            <b-form-input>
+                v-model="form.itemPrice"
+                >
+            </b-form-input>
+        </b-form-group>
+
+
     </b-form>
 </template>
 

@@ -2,8 +2,8 @@
     <b-container>
         <b-row>
             <b-col>
-                <b-card>
-                    <p v-for="item in items" :key='item'>{{ item.name }}, {{ item.description }}, ${{ item.price }}</p>
+                <b-card v-for="item in items" :key='item'>
+                    <p><strong>{{ item.name }}</strong>, {{ item.description }}, ${{ item.price }}</p>
                 </b-card>
             </b-col>
         </b-row>
