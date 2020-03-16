@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
         <meta name="csrf-token" content="{{ csrf_token()}}"> 
     
-        <title>Sexy Auth</title>
+        <title>rollerDerby</title>
 
         <!-- Fonts -->
         <link href="https://bootswatch.com/4/litera/bootstrap.min.css" rel="stylesheet">
