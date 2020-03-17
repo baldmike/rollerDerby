@@ -2043,6 +2043,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'dashboard',
@@ -51402,22 +51415,45 @@ var render = function() {
     [
       _c(
         "b-row",
-        [
-          _c(
+        _vm._l(_vm.items, function(item) {
+          return _c(
             "b-col",
-            _vm._l(_vm.items, function(item) {
-              return _c("b-card", { key: item }, [
-                _c("p", [
-                  _c("strong", [_vm._v(_vm._s(item.name))]),
-                  _vm._v(
-                    ", " + _vm._s(item.description) + ", $" + _vm._s(item.price)
-                  )
-                ])
-              ])
-            }),
+            { key: item, attrs: { cols: "3" } },
+            [
+              _c(
+                "b-card",
+                {
+                  staticClass: "mb-2",
+                  staticStyle: { "max-width": "20rem", height: "30rem" },
+                  attrs: {
+                    title: item.name,
+                    "img-src": "https://picsum.photos/600/300/?image=25",
+                    "img-alt": "Image",
+                    "img-top": "",
+                    tag: "article"
+                  }
+                },
+                [
+                  _c("b-card-text", [
+                    _vm._v(
+                      "\n                " +
+                        _vm._s(item.description) +
+                        ",\n                " +
+                        _vm._s(item.price) +
+                        "\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("b-button", { attrs: { href: "#", variant: "primary" } }, [
+                    _vm._v("Add to cart")
+                  ])
+                ],
+                1
+              )
+            ],
             1
           )
-        ],
+        }),
         1
       )
     ],
@@ -76006,8 +76042,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_cookie__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/michaelschieber/Desktop/repos/rollerDerby/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/michaelschieber/Desktop/repos/rollerDerby/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/baldmike/Documents/projects_laravel/rollerDerby/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/baldmike/Documents/projects_laravel/rollerDerby/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
