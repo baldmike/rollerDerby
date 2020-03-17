@@ -2072,6 +2072,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
+    // make call to get all items
     axios.get('/api/items').then(function (response) {
       _this.items = response.data.data;
     });
@@ -51418,7 +51419,7 @@ var render = function() {
         _vm._l(_vm.items, function(item) {
           return _c(
             "b-col",
-            { key: item, attrs: { cols: "3" } },
+            { key: item, attrs: { cols: "4" } },
             [
               _c(
                 "b-card",
@@ -51438,15 +51439,20 @@ var render = function() {
                     _vm._v(
                       "\n                " +
                         _vm._s(item.description) +
-                        ",\n                " +
+                        ", \n                " +
                         _vm._s(item.price) +
                         "\n                "
                     )
                   ]),
                   _vm._v(" "),
-                  _c("b-button", { attrs: { href: "#", variant: "primary" } }, [
-                    _vm._v("Add to cart")
-                  ])
+                  _c(
+                    "b-button",
+                    {
+                      staticStyle: { position: "absolute", bottom: "0" },
+                      attrs: { href: "#", variant: "primary" }
+                    },
+                    [_vm._v("Add to cart")]
+                  )
                 ],
                 1
               )

@@ -1,7 +1,7 @@
 <template>
     <b-container>
         <b-row>
-            <b-col v-for="item in items" :key='item' cols="3">
+            <b-col v-for="item in items" :key='item' cols="4">
                 <b-card
                     
                     :title="item.name"
@@ -12,11 +12,11 @@
                     style="max-width: 20rem; height: 30rem;"
                     class="mb-2">
                     <b-card-text>
-                    {{ item.description }},
+                    {{ item.description }}, 
                     {{ item.price }}
                     </b-card-text>
 
-                    <b-button href="#" variant="primary">Add to cart</b-button>
+                    <b-button href="#" variant="primary" style="position: absolute; bottom: 0;">Add to cart</b-button>
                 </b-card>
             </b-col>
         </b-row>
@@ -46,6 +46,7 @@
             },
         },
         created() {
+            // make call to get all items
             axios.get('/api/items').then((response) => {
                 this.items = response.data.data;
             });
