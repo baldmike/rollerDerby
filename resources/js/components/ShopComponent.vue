@@ -55,11 +55,7 @@
 </script>
 
 <style lang="scss" scoped>
+    // this allows use of variables set in sass. Try one today!
     @import "../../sass/_variables.scss";
-
-    // .mainPlace {
-    //     background-color: $test;
-    //     color: black;
-    // }
     
 </style>
