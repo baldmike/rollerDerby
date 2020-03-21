@@ -51128,7 +51128,7 @@ var render = function() {
       _c(
         "b-row",
         [
-          _vm.currentUser
+          _vm.isCurrentUser
             ? _c(
                 "b-col",
                 [
