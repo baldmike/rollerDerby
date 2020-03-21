@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ItemResource;
+use App\Http\Requests\ItemRequest;
 
 class ItemsController extends Controller
 {
@@ -33,7 +34,37 @@ class ItemsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validated();
+        if($validated)
+        {
+            $item = new Item();
+
+            $item->name = request('name');
+            $item->description = request('description');
+            $item->price = request('price');
+            $item->image = request('image');
+            $item->number_available = request('number_available');    
+            $item->size = request('size');
+            
+        }
+
+        if($request->hasFile('image'))
+        {
+            $path = Storage::putFile('public/images', $request->file('image'), 'public');
+
+            // $path includes 'public/', and we don't want that in our URL, so we chop it off:
+            $path = substr($path, 6);
+
+            $item->image = $path;
+        }
+
+        if ($item->save()) 
+        {
+            return response()->json(['message' => 'Item successfully created and persisted'], Response::HTTP_CREATED);
+        };
+
+        // Care Package did not save, return 417
+        return response()->json(['message' => 'Item did not save'], Response::HTTP_EXPECTATION_FAILED);
     }
 
     /**
