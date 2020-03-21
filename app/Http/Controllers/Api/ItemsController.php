@@ -4,8 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Item;
 use Illuminate\Http\Request;
-use App\Http\Resources\ItemResource;
+use Illuminate\Http\Response;
+
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ItemResource;
 
 class ItemsController extends Controller
 {
@@ -16,7 +22,7 @@ class ItemsController extends Controller
      */
     public function index()
     {
-        return new ItemResource(Item::all());
+        return ItemResource::collection(Item::orderBy('created_at', 'asc')->get());
     }
 
     /**
@@ -26,7 +32,7 @@ class ItemsController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

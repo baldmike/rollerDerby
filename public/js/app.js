@@ -2117,7 +2117,9 @@ __webpack_require__.r(__webpack_exports__);
   props: ["loginComponent"],
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['isAuthenticated']),
   methods: Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['login']),
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    console.log("MAIN APP Mounted");
+  }
 });
 
 /***/ }),
@@ -51126,17 +51128,19 @@ var render = function() {
       _c(
         "b-row",
         [
-          _c(
-            "b-col",
-            [
-              _vm.currentUser.role === "admin"
-                ? _c("router-link", { attrs: { to: "add-item" } }, [
-                    _vm._v("Add Item")
-                  ])
-                : _vm._e()
-            ],
-            1
-          )
+          _vm.currentUser
+            ? _c(
+                "b-col",
+                [
+                  _vm.currentUser.role === "admin"
+                    ? _c("router-link", { attrs: { to: "add-item" } }, [
+                        _vm._v("Add Item")
+                      ])
+                    : _vm._e()
+                ],
+                1
+              )
+            : _vm._e()
         ],
         1
       )
@@ -51349,11 +51353,15 @@ var render = function() {
                 "b-navbar-nav",
                 { staticClass: "ml-auto" },
                 [
-                  _vm.isAuthenticated
+                  _vm.isAuthenticated && _vm.currentUser
                     ? _c(
                         "b-nav-item",
                         { attrs: { right: "" }, on: { click: _vm.logout } },
-                        [_vm._v("Logout- " + _vm._s(_vm.currentUser.name))]
+                        [
+                          _vm._v(
+                            "Logout - " + _vm._s(_vm.currentUser.name) + " "
+                          )
+                        ]
                       )
                     : _vm._e()
                 ],
@@ -76054,8 +76062,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_cookie__WEBPACK_IMPORTED_MODU
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/baldmike/Documents/projects_laravel/rollerDerby/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/baldmike/Documents/projects_laravel/rollerDerby/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/michaelschieber/Desktop/repos/rollerDerby/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/michaelschieber/Desktop/repos/rollerDerby/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
