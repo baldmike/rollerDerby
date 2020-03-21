@@ -1,14 +1,14 @@
 <template>
     <b-container>
         <b-row>
-            <b-col>
-                <b-table v-if="currentUser.role == 'admin'" striped hover :items="[currentUser]" :fields="fields"></b-table>
+            <b-col v-if="currentUser.role === 'admin'">
+                <b-table striped hover :items="users" :fields="fields"></b-table>
             </b-col>
         </b-row>
 
         <b-row>
             <b-col>
-                <router-link v-if="currentUser.role='admin'" to="add-item">Add Item</router-link>
+                <router-link v-if="currentUser.role==='admin'" to="add-item">Add Item</router-link>
             </b-col>
         </b-row>
     </b-container>
@@ -46,6 +46,13 @@
         },
 
         computed: mapGetters(['isAuthenticated', 'currentUser']),
+        isCurrentUser() {
+            if (isAuthenticated) {
+                return currentUser
+            }
+
+            return false;
+        },
         methods: {
             init() {
                 

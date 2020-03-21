@@ -10,7 +10,8 @@
                 </b-navbar-nav>
                     
                 <b-navbar-nav class="ml-auto">
-                    <b-nav-item v-if="isAuthenticated" @click="logout" right>Logout</b-nav-item>
+                    
+                    <b-nav-item v-if="isAuthenticated" @click="logout" right>Logout- {{ currentUser.name }}</b-nav-item>
                 </b-navbar-nav>
             </b-collapse>
         </b-navbar>
