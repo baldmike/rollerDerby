@@ -15,7 +15,7 @@ class AuthSmokeTest extends TestCase
      */
     public function testLogin()
     {
-        $user = User::where('email', 'email@example.com')->first();
+        $user = User::all()->random()->first();
 
         $data = [
             'grant_type' => 'password',
