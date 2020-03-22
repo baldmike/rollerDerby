@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,13 +18,12 @@ Route::post('/login', 'Api\AuthController@login');
 Route::post('/register', 'Api\AuthController@register');
 Route::post('/logout', 'Api\AuthController@logout');
 
-Route::resource('item', 'Api\ItemsController');
+Route::resource('items', 'Api\ItemsController');
 
 Route::middleware('auth:api')->group(function () {
     
     Route::get('/user', 'Api\UsersController@current');
     Route::get('/users', 'Api\UsersController@index');
-    Route::get('/items', 'Api\ItemsController@index');
     
 });
 

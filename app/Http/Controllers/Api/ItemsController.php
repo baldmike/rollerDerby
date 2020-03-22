@@ -32,8 +32,10 @@ class ItemsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ItemRequest $request)
     {
+        Log::debug("INSIDE [STORE] METHOD ---------->");
+        Log::debug($request);
         $validated = $request->validated();
         if($validated)
         {
