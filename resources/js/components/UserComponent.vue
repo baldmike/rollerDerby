@@ -69,11 +69,5 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "../../sass/_variables.scss";
-
-    // .mainPlace {
-    //     background-color: $test;
-    //     color: black;
-    // }
-    
+    @import "../../sass/_variables.scss";   
 </style>

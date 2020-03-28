@@ -1768,6 +1768,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 var zip = vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["helpers"].regex('zip', /(^\d{5}$)|(^\d{5}-\d{4}$)/);
@@ -1838,18 +1849,10 @@ var zip = vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["helpers"].regex
       var _this2 = this;
 
       /* Reset our form values */
-      this.form.firstName = '';
-      this.form.lastName = '';
-      this.form.email = '';
-      this.form.address1 = '';
-      this.form.address2 = '';
-      this.form.city = '';
-      this.form.state = '';
-      this.form.zip = '';
       this.form.itemName = '';
-      this.form.about = '';
-      this.form.diagnosis = '';
-      this.form.image = '';
+      this.form.itemDescription = '';
+      this.form.itemSize = '';
+      this.form.itemPrice = 0;
       /* reset/clear native browser form validation state */
 
       this.show = false;
@@ -51380,7 +51383,7 @@ var render = function() {
                       },
                       attrs: {
                         id: "itemDescription",
-                        placeholder: "Ex. Ruby Slipper",
+                        placeholder: "Description",
                         maxlength: "40",
                         required: ""
                       },
@@ -51395,6 +51398,46 @@ var render = function() {
                             "itemDescription",
                             $event.target.value
                           )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("b-form-group", [
+                    _c(
+                      "label",
+                      { staticClass: "label", attrs: { for: "ItemPrice" } },
+                      [_vm._v("Item Price")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.itemPrice,
+                          expression: "form.itemPrice"
+                        }
+                      ],
+                      class: {
+                        "has-danger":
+                          _vm.$v.form.itemPrice.$invalid &&
+                          _vm.$v.form.itemPrice.$dirty,
+                        "has-success": !_vm.$v.form.itemPrice.$invalid
+                      },
+                      attrs: {
+                        id: "itemPrice",
+                        placeholder: "Ex. Ruby Slipper",
+                        maxlength: "40",
+                        required: ""
+                      },
+                      domProps: { value: _vm.form.itemPrice },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "itemPrice", $event.target.value)
                         }
                       }
                     })

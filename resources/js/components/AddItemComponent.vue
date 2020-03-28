@@ -22,6 +22,17 @@
                                 id="itemDescription"
                                 :class="{ 'has-danger': $v.form.itemDescription.$invalid && $v.form.itemDescription.$dirty, 'has-success': !$v.form.itemDescription.$invalid }"
                                 v-model="form.itemDescription"
+                                placeholder="Description"
+                                maxlength="40"
+                                required/>
+                    </b-form-group>
+
+                    <b-form-group>
+                        <label for="ItemPrice" class="label">Item Price</label>
+                        <input
+                                id="itemPrice"
+                                :class="{ 'has-danger': $v.form.itemPrice.$invalid && $v.form.itemPrice.$dirty, 'has-success': !$v.form.itemPrice.$invalid }"
+                                v-model="form.itemPrice"
                                 placeholder="Ex. Ruby Slipper"
                                 maxlength="40"
                                 required/>
@@ -127,18 +138,11 @@
             },
             resetForm() {
                 /* Reset our form values */
-                this.form.firstName = ''
-                this.form.lastName = ''
-                this.form.email = ''
-                this.form.address1 = ''
-                this.form.address2 = ''
-                this.form.city = ''
-                this.form.state = ''
-                this.form.zip = ''
                 this.form.itemName = ''
-                this.form.about = '' 
-                this.form.diagnosis = ''
-                this.form.image = ''
+                this.form.itemDescription = ''
+                this.form.itemSize = ''
+                this.form.itemPrice = 0
+                
 
                 /* reset/clear native browser form validation state */
                 this.show = false
