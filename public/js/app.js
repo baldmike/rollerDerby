@@ -2044,6 +2044,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'dashboard',
@@ -51538,6 +51544,22 @@ var render = function() {
             1
           )
         }),
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "b-row",
+        [
+          _c(
+            "b-col",
+            [
+              _c("router-link", { attrs: { to: "add-item" } }, [
+                _vm._v("Add an Item")
+              ])
+            ],
+            1
+          )
+        ],
         1
       )
     ],
