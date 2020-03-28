@@ -29370,7 +29370,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".center[data-v-e0611c18] {\n  text-align: center;\n}\n.text[data-v-e0611c18] {\n  color: darkgrey;\n}\n.form-box[data-v-e0611c18] {\n  border: 1px solid #fd7e14;\n  border-radius: 6px;\n  margin: 1rem;\n  padding: 1rem;\n}", ""]);
+exports.push([module.i, ".center[data-v-e0611c18] {\n  text-align: center;\n}\n.text[data-v-e0611c18] {\n  color: darkgrey;\n}\n.form-box[data-v-e0611c18] {\n  border: 1px solid #fd7e14;\n  border-radius: 6px;\n  margin: 1rem;\n  padding: 1rem;\n}\n.label[data-v-e0611c18] {\n  width: 140px;\n}", ""]);
 
 // exports
 
@@ -51314,9 +51314,11 @@ var render = function() {
                     : _vm._e(),
                   _vm._v(" "),
                   _c("b-form-group", [
-                    _c("label", { attrs: { for: "itemName" } }, [
-                      _vm._v("Item Name")
-                    ]),
+                    _c(
+                      "label",
+                      { staticClass: "label", attrs: { for: "itemName" } },
+                      [_vm._v("Item Name")]
+                    ),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -51352,9 +51354,14 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("b-form-group", [
-                    _c("label", { attrs: { for: "itemDescription" } }, [
-                      _vm._v("Item Description")
-                    ]),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "label",
+                        attrs: { for: "itemDescription" }
+                      },
+                      [_vm._v("Item Description")]
+                    ),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -51394,9 +51401,14 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("b-form-group", [
-                    _c("label", { attrs: { for: "itemDescription" } }, [
-                      _vm._v("Item Price")
-                    ]),
+                    _c(
+                      "label",
+                      {
+                        staticClass: "label",
+                        attrs: { for: "itemDescription" }
+                      },
+                      [_vm._v("Item Price")]
+                    ),
                     _vm._v(" "),
                     _c("input", {
                       directives: [

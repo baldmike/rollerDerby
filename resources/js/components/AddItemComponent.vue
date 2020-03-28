@@ -6,7 +6,7 @@
                     <h6 v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required</h6>
 
                     <b-form-group>
-                        <label for="itemName">Item Name</label>
+                        <label for="itemName" class="label">Item Name</label>
                         <input
                                 id="itemName"
                                 :class="{ 'has-danger': $v.form.itemName.$invalid && $v.form.itemName.$dirty, 'has-success': !$v.form.itemName.$invalid }"
@@ -17,7 +17,7 @@
                     </b-form-group>
 
                     <b-form-group>
-                        <label for="itemDescription">Item Description</label>
+                        <label for="itemDescription" class="label">Item Description</label>
                         <input
                                 id="itemDescription"
                                 :class="{ 'has-danger': $v.form.itemDescription.$invalid && $v.form.itemDescription.$dirty, 'has-success': !$v.form.itemDescription.$invalid }"
@@ -28,7 +28,7 @@
                     </b-form-group>
 
                     <b-form-group>
-                        <label for="itemDescription">Item Price</label>
+                        <label for="itemDescription" class="label">Item Price</label>
                         <input
                                 id="itemDescription"
                                 :class="{ 'has-danger': $v.form.itemPrice.$invalid && $v.form.itemPrice.$dirty, 'has-success': !$v.form.itemPrice.$invalid }"
@@ -181,6 +181,10 @@
         border-radius: 6px;
         margin: 1rem;
         padding: 1rem;
+    }
+
+    .label {
+        width: 140px;
     }
     
    
