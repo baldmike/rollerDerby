@@ -1,9 +1,9 @@
 <template>
     <b-container>
         <b-row>
-            <b-col cols="12">
-                <b-form action="">
-                    <h6 class="center" v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required</h6>
+            <b-col>
+                <b-form>
+                    <h6 v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required</h6>
 
                     <b-form-group>
                         <label for="itemName">Item Name</label>
@@ -22,6 +22,17 @@
                                 id="itemDescription"
                                 :class="{ 'has-danger': $v.form.itemDescription.$invalid && $v.form.itemDescription.$dirty, 'has-success': !$v.form.itemDescription.$invalid }"
                                 v-model="form.itemDescription"
+                                placeholder="Ex. Ruby Slipper"
+                                maxlength="40"
+                                required/>
+                    </b-form-group>
+
+                    <b-form-group>
+                        <label for="itemDescription">Item Price</label>
+                        <input
+                                id="itemDescription"
+                                :class="{ 'has-danger': $v.form.itemPrice.$invalid && $v.form.itemPrice.$dirty, 'has-success': !$v.form.itemPrice.$invalid }"
+                                v-model="form.itemPrice"
                                 placeholder="Ex. Ruby Slipper"
                                 maxlength="40"
                                 required/>
@@ -101,7 +112,7 @@
 
                     this.$store.dispatch('cpFormSubmit');
                     
-                    axios.post("/api/care_pkgs", formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
+                    axios.post("/api/items", formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
 
                         this.$store.dispatch('cpFormSuccess')
 

@@ -1757,6 +1757,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 var zip = vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["helpers"].regex('zip', /(^\d{5}$)|(^\d{5}-\d{4}$)/);
@@ -1808,7 +1819,7 @@ var zip = vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["helpers"].regex
           formData.append(key, _this.form[key]);
         });
         this.$store.dispatch('cpFormSubmit');
-        axios.post("/api/care_pkgs", formData, {
+        axios.post("/api/items", formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
@@ -51288,14 +51299,12 @@ var render = function() {
         [
           _c(
             "b-col",
-            { attrs: { cols: "12" } },
             [
               _c(
                 "b-form",
-                { attrs: { action: "" } },
                 [
                   _vm.$v.form.$dirty
-                    ? _c("h6", { staticClass: "center" }, [
+                    ? _c("h6", [
                         _vm._v("Fields marked with a red "),
                         _c("span", { staticStyle: { color: "red" } }, [
                           _vm._v("X")
@@ -51379,6 +51388,44 @@ var render = function() {
                             "itemDescription",
                             $event.target.value
                           )
+                        }
+                      }
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("b-form-group", [
+                    _c("label", { attrs: { for: "itemDescription" } }, [
+                      _vm._v("Item Price")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.itemPrice,
+                          expression: "form.itemPrice"
+                        }
+                      ],
+                      class: {
+                        "has-danger":
+                          _vm.$v.form.itemPrice.$invalid &&
+                          _vm.$v.form.itemPrice.$dirty,
+                        "has-success": !_vm.$v.form.itemPrice.$invalid
+                      },
+                      attrs: {
+                        id: "itemDescription",
+                        placeholder: "Ex. Ruby Slipper",
+                        maxlength: "40",
+                        required: ""
+                      },
+                      domProps: { value: _vm.form.itemPrice },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.form, "itemPrice", $event.target.value)
                         }
                       }
                     })
