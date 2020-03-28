@@ -8,6 +8,10 @@
                 <b-navbar-nav>
                     <b-nav-item v-if="isAuthenticated" to="shop">Shop</b-nav-item>
                 </b-navbar-nav>
+
+                <b-navbar-nav>
+                    <b-nav-item v-if="isAuthenticated" to="users">Users</b-nav-item>
+                </b-navbar-nav>
                     
                 <b-navbar-nav class="ml-auto">
                     

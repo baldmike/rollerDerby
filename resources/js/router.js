@@ -6,6 +6,7 @@ import DashboardComponent from './components/DashboardComponent'
 import ShopComponent from './components/ShopComponent'
 import AddItemComponent from './components/AddItemComponent'
 import LoginComponent from './components/LoginComponent'
+import UserComponent from './components/UserComponent'
 
 export const router = new VueRouter({ 
     mode: 'history', 
@@ -34,6 +35,11 @@ export const router = new VueRouter({
                 {
                     path: 'shop',
                     component: ShopComponent,
+                },
+
+                {
+                    path: 'users',
+                    component: UserComponent,
                 },
 
                 {
