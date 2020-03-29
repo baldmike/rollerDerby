@@ -91,7 +91,7 @@
                                 round 
                                 block
                                 :disabled="$v.form.$dirty"
-                                @click.prevent.native="addItem">
+                                @click.prevent="addItem">
                                 Add Item</button>
 
                     </b-col>
@@ -160,27 +160,29 @@
         methods: {
             addItem() {
 
+                console.log("Inside addItem #############")
                 this.$v.form.$touch();
 
-                if (!this.$v.form.$invalid) {
+                if (this.$v.form.$invalid) {
                     let formData = new FormData();
 
                     Object.keys(this.form).forEach(key => {
                         formData.append(key, this.form[key])
                     })
 
-                    this.$store.dispatch('formSubmit');
+                    // this.$store.dispatch('formSubmit');
                     
                     axios.post("/api/items", formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
 
-                        this.$store.dispatch('formSuccess')
+                        // this.$store.dispatch('formSuccess')
+                        this.resetForm()
 
                     }).catch((error) => {
 
                             if (error.response.status === 400) {
-                
+                                console.log("ERROR: " + error);
                             }
-                            this.$store.dispatch('formError')
+                            // this.$store.dispatch('formError')
                     })
                 }
             },

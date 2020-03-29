@@ -45,7 +45,7 @@ class ItemsController extends Controller
             $item->description = request('itemDescription');
             $item->price = request('itemPrice');
             $item->image = request('itemImage');
-            $item->number_available = request('number_available');    
+            $item->number_available = request('numberAvailable');    
             $item->size = request('itemSize');
         }
 

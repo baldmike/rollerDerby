@@ -1870,14 +1870,15 @@ var zip = vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["helpers"].regex
     addItem: function addItem() {
       var _this = this;
 
+      console.log("Inside addItem #############");
       this.$v.form.$touch();
 
-      if (!this.$v.form.$invalid) {
+      if (this.$v.form.$invalid) {
         var formData = new FormData();
         Object.keys(this.form).forEach(function (key) {
           formData.append(key, _this.form[key]);
-        });
-        this.$store.dispatch('formSubmit');
+        }); // this.$store.dispatch('formSubmit');
+
         axios.post("/api/items", formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
@@ -1885,11 +1886,13 @@ var zip = vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["helpers"].regex
         }).then(function (_ref) {
           var data = _ref.data;
 
-          _this.$store.dispatch('formSuccess');
+          // this.$store.dispatch('formSuccess')
+          _this.resetForm();
         })["catch"](function (error) {
-          if (error.response.status === 400) {}
+          if (error.response.status === 400) {
+            console.log("ERROR: " + error);
+          } // this.$store.dispatch('formError')
 
-          _this.$store.dispatch('formError');
         });
       }
     },
@@ -51630,7 +51633,7 @@ var render = function() {
                           block: "",
                           disabled: _vm.$v.form.$dirty
                         },
-                        nativeOn: {
+                        on: {
                           click: function($event) {
                             $event.preventDefault()
                             return _vm.addItem($event)
