@@ -58,6 +58,12 @@ export default new Vuex.Store({
 
         setLoginCred(context, payload) {
             context.commit('setLoginCred', payload)
+
+            axios.call("get", "/api/user").then((userData) => {
+                let user = userData.data.data
+                console.log("USER ----> " + user);
+                context.commit('setUser', user)
+            })
         },
         refreshUserData(context) {
             axios.call("get", "/api/user").then((userData) => {

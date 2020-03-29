@@ -65,7 +65,7 @@
                 this.users = response.data.data;
             });
 
-            this.$store.dispatch('refreshUserData');
+            // this.$store.dispatch('refreshUserData');
         }
     }
 </script>

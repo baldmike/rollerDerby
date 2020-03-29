@@ -2260,8 +2260,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     axios.get('/api/users').then(function (response) {
       _this.users = response.data.data;
-    });
-    this.$store.dispatch('refreshUserData');
+    }); // this.$store.dispatch('refreshUserData');
   }
 });
 
@@ -51826,7 +51825,7 @@ var render = function() {
         _vm._l(_vm.items, function(item) {
           return _c(
             "b-col",
-            { key: item, attrs: { cols: "4" } },
+            { key: item.id, attrs: { cols: "4" } },
             [
               _c(
                 "b-card",
@@ -76631,6 +76630,11 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_cookie__WEBPACK_IMPORTED_MODU
     // actions are dispatched, they commit mutations
     setLoginCred: function setLoginCred(context, payload) {
       context.commit('setLoginCred', payload);
+      axios__WEBPACK_IMPORTED_MODULE_4___default.a.call("get", "/api/user").then(function (userData) {
+        var user = userData.data.data;
+        console.log("USER ----> " + user);
+        context.commit('setUser', user);
+      });
     },
     refreshUserData: function refreshUserData(context) {
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.call("get", "/api/user").then(function (userData) {
