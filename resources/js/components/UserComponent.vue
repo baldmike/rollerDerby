@@ -7,7 +7,7 @@
         </b-row>
 
         <b-row>
-            <b-col v-if="isCurrentUser">
+            <b-col v-if="currentUser">
                 <router-link v-if="currentUser.role==='admin'" to="add-item">Add Item</router-link>
             </b-col>
         </b-row>
@@ -45,13 +45,15 @@
             }
         },
 
-        computed: mapGetters(['isAuthenticated', 'currentUser']),
-        isCurrentUser() {
+        computed: {
+            isCurrentUser() {
             if (isAuthenticated) {
-                return currentUser
+                return true;
             }
 
             return false;
+        },
+        ...mapGetters(['isAuthenticated', 'currentUser'])
         },
         methods: {
             init() {
