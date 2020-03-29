@@ -22,7 +22,6 @@
         methods: mapActions(['login']),
         mounted() {
             
-            console.log("MAIN APP Mounted");
         }
     }
 

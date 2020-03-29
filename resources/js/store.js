@@ -58,14 +58,12 @@ export default new Vuex.Store({
 
             axios.call("get", "/api/user").then((userData) => {
                 let user = userData.data.data
-                console.log("USER ----> " + user);
                 context.commit('setUser', user)
             })
         },
         refreshUserData(context) {
             axios.call("get", "/api/user").then((userData) => {
                 let user = userData.data.data
-                console.log("USER ----> " + user);
                 context.commit('setUser', user)
             })
         },

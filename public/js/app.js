@@ -2294,9 +2294,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ["loginComponent"],
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['isAuthenticated']),
   methods: Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapActions"])(['login']),
-  mounted: function mounted() {
-    console.log("MAIN APP Mounted");
-  }
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -76621,14 +76619,12 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_cookie__WEBPACK_IMPORTED_MODU
       context.commit('setLoginCred', payload);
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.call("get", "/api/user").then(function (userData) {
         var user = userData.data.data;
-        console.log("USER ----> " + user);
         context.commit('setUser', user);
       });
     },
     refreshUserData: function refreshUserData(context) {
       axios__WEBPACK_IMPORTED_MODULE_4___default.a.call("get", "/api/user").then(function (userData) {
         var user = userData.data.data;
-        console.log("USER ----> " + user);
         context.commit('setUser', user);
       });
     },
