@@ -1723,10 +1723,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__);
-var _form;
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1808,8 +1837,8 @@ var zip = vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["helpers"].regex
         itemName: '',
         itemDescription: '',
         itemPrice: 0,
-        itemSize: null,
-        number_available: 0,
+        itemSize: '',
+        numberAvailable: 0,
         image: null,
         url: null,
         sent: false
@@ -1820,7 +1849,7 @@ var zip = vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["helpers"].regex
   components: {},
   mixins: [vuelidate__WEBPACK_IMPORTED_MODULE_0__["validationMixin"]],
   validations: {
-    form: (_form = {
+    form: {
       itemName: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"],
         minLength: 1
@@ -1831,13 +1860,14 @@ var zip = vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["helpers"].regex
       },
       itemPrice: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      },
+      number_available: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
       }
-    }, _defineProperty(_form, "itemPrice", {}), _defineProperty(_form, "number_available", {
-      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
-    }), _form)
+    }
   },
   methods: {
-    requestCarePackage: function requestCarePackage() {
+    addItem: function addItem() {
       var _this = this;
 
       this.$v.form.$touch();
@@ -1847,7 +1877,7 @@ var zip = vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["helpers"].regex
         Object.keys(this.form).forEach(function (key) {
           formData.append(key, _this.form[key]);
         });
-        this.$store.dispatch('cpFormSubmit');
+        this.$store.dispatch('formSubmit');
         axios.post("/api/items", formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
@@ -1855,11 +1885,11 @@ var zip = vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["helpers"].regex
         }).then(function (_ref) {
           var data = _ref.data;
 
-          _this.$store.dispatch('cpFormSuccess');
+          _this.$store.dispatch('formSuccess');
         })["catch"](function (error) {
           if (error.response.status === 400) {}
 
-          _this.$store.dispatch('cpFormError');
+          _this.$store.dispatch('formError');
         });
       }
     },
@@ -1889,7 +1919,7 @@ var zip = vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["helpers"].regex
         _this3.show = true;
       });
     },
-    onFileChange: function onFileChange(e) {
+    onImageChange: function onImageChange(e) {
       var file = e.target.files[0];
       this.form.url = URL.createObjectURL(file);
       this.form.image = file;
@@ -51388,7 +51418,7 @@ var render = function() {
                         [_vm._v("Item Description")]
                       ),
                       _vm._v(" "),
-                      _c("b-form-input", {
+                      _c("b-form-textarea", {
                         class: {
                           "has-danger":
                             _vm.$v.form.itemDescription.$invalid &&
@@ -51398,7 +51428,8 @@ var render = function() {
                         attrs: {
                           id: "itemDescription",
                           placeholder: "Description",
-                          maxlength: "40",
+                          rows: "4",
+                          "max-rows": "10",
                           required: ""
                         },
                         model: {
@@ -51414,62 +51445,100 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _c(
-                    "b-form-group",
+                    "b-row",
                     [
                       _c(
-                        "label",
-                        { staticClass: "label", attrs: { for: "ItemPrice" } },
-                        [_vm._v("Item Price")]
+                        "b-col",
+                        [
+                          _c("b-form-group", [
+                            _c(
+                              "label",
+                              {
+                                staticClass: "label",
+                                attrs: { for: "ItemPrice" }
+                              },
+                              [_vm._v("Item Price")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "input-group-prepend" },
+                              [
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass: "input-group-text",
+                                    attrs: { id: "basic-addon1" }
+                                  },
+                                  [_vm._v("$")]
+                                ),
+                                _vm._v(" "),
+                                _c("b-form-input", {
+                                  class: {
+                                    "has-danger":
+                                      _vm.$v.form.itemPrice.$invalid &&
+                                      _vm.$v.form.itemPrice.$dirty,
+                                    "has-success": !_vm.$v.form.itemPrice
+                                      .$invalid
+                                  },
+                                  attrs: {
+                                    id: "itemPrice",
+                                    type: "number",
+                                    placeholder: "Ex. Ruby Slipper",
+                                    maxlength: "40",
+                                    required: ""
+                                  },
+                                  model: {
+                                    value: _vm.form.itemPrice,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.form, "itemPrice", $$v)
+                                    },
+                                    expression: "form.itemPrice"
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ])
+                        ],
+                        1
                       ),
                       _vm._v(" "),
-                      _c("b-form-input", {
-                        class: {
-                          "has-danger":
-                            _vm.$v.form.itemPrice.$invalid &&
-                            _vm.$v.form.itemPrice.$dirty,
-                          "has-success": !_vm.$v.form.itemPrice.$invalid
-                        },
-                        attrs: {
-                          id: "itemPrice",
-                          placeholder: "Ex. Ruby Slipper",
-                          maxlength: "40",
-                          required: ""
-                        },
-                        model: {
-                          value: _vm.form.itemPrice,
-                          callback: function($$v) {
-                            _vm.$set(_vm.form, "itemPrice", $$v)
-                          },
-                          expression: "form.itemPrice"
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-form-group",
-                    [
                       _c(
-                        "label",
-                        { staticClass: "label", attrs: { for: "itemSize" } },
-                        [_vm._v("Item Size")]
-                      ),
-                      _vm._v(" "),
-                      _c("b-form-input", {
-                        attrs: {
-                          id: "itemSize",
-                          placeholder: "Sm, Md, Lg, XL",
-                          maxlength: "40"
-                        },
-                        model: {
-                          value: _vm.form.itemSize,
-                          callback: function($$v) {
-                            _vm.$set(_vm.form, "itemSize", $$v)
-                          },
-                          expression: "form.itemSize"
-                        }
-                      })
+                        "b-col",
+                        [
+                          _c(
+                            "b-form-group",
+                            [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "label",
+                                  attrs: { for: "itemSize" }
+                                },
+                                [_vm._v("Item Size")]
+                              ),
+                              _vm._v(" "),
+                              _c("b-form-input", {
+                                attrs: {
+                                  id: "itemSize",
+                                  placeholder: "Sm, Md, Lg, XL",
+                                  maxlength: "40"
+                                },
+                                model: {
+                                  value: _vm.form.itemSize,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "itemSize", $$v)
+                                  },
+                                  expression: "form.itemSize"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
                     ],
                     1
                   ),
@@ -51478,14 +51547,14 @@ var render = function() {
                     "b-form-group",
                     {
                       staticClass: "box",
-                      attrs: { id: "imageGroup", "label-for": "imageFinReq" }
+                      attrs: { id: "imageGroup", "label-for": "itemImage" }
                     },
                     [
                       _c("label", { staticClass: "label" }, [_vm._v("Image")]),
                       _vm._v(" "),
                       _c("b-form-file", {
                         attrs: {
-                          id: "imageFinReq",
+                          id: "itemImage",
                           accept: "image/*",
                           placeholder: "Choose an image..."
                         },
@@ -51503,13 +51572,13 @@ var render = function() {
                         "b-col",
                         {
                           staticStyle: { "margin-top": "1rem" },
-                          attrs: { cols: "6", offset: "3" }
+                          attrs: { cols: "2", offset: "5" }
                         },
                         [
-                          _vm.url
+                          _vm.form.url
                             ? _c("img", {
                                 attrs: {
-                                  src: _vm.url,
+                                  src: _vm.form.url,
                                   width: "200",
                                   alt: "uploaded image"
                                 }
@@ -51519,7 +51588,58 @@ var render = function() {
                       )
                     ],
                     1
-                  )
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "b-form-group",
+                    [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "label",
+                          attrs: { for: "numberAvailable" }
+                        },
+                        [_vm._v("Number Available")]
+                      ),
+                      _vm._v(" "),
+                      _c("b-form-input", {
+                        attrs: {
+                          id: "numberAvailable",
+                          placeholder: "Please enter the number available",
+                          maxlength: "40"
+                        },
+                        model: {
+                          value: _vm.form.numberAvailable,
+                          callback: function($$v) {
+                            _vm.$set(_vm.form, "numberAvailable", $$v)
+                          },
+                          expression: "form.numberAvailable"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("b-col", { attrs: { cols: "2", offset: "5" } }, [
+                    _c(
+                      "button",
+                      {
+                        attrs: {
+                          type: "primary",
+                          round: "",
+                          block: "",
+                          disabled: _vm.$v.form.$dirty
+                        },
+                        nativeOn: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.addItem($event)
+                          }
+                        }
+                      },
+                      [_vm._v("\n                            Add Item")]
+                    )
+                  ])
                 ],
                 1
               )

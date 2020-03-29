@@ -20,49 +20,82 @@
 
                     <b-form-group>
                         <label for="itemDescription" class="label">Item Description</label>
-                        <b-form-input
+                        <b-form-textarea
                                 id="itemDescription"
                                 :class="{ 'has-danger': $v.form.itemDescription.$invalid && $v.form.itemDescription.$dirty, 'has-success': !$v.form.itemDescription.$invalid }"
                                 v-model="form.itemDescription"
                                 placeholder="Description"
-                                maxlength="40"
+                                rows="4"
+                                max-rows="10"
                                 required/>
                     </b-form-group>
 
-                    <b-form-group>
-                        <label for="ItemPrice" class="label">Item Price</label>
-                        <b-form-input
-                                id="itemPrice"
-                                :class="{ 'has-danger': $v.form.itemPrice.$invalid && $v.form.itemPrice.$dirty, 'has-success': !$v.form.itemPrice.$invalid }"
-                                v-model="form.itemPrice"
-                                placeholder="Ex. Ruby Slipper"
-                                maxlength="40"
-                                required/>
-                    </b-form-group>
+                    <b-row>
+                        <b-col>
+                            <b-form-group>
+                                <label for="ItemPrice" class="label">Item Price</label>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">$</span>
+                                
+                                    <b-form-input
+                                            id="itemPrice"
+                                            type="number"
+                                            :class="{ 'has-danger': $v.form.itemPrice.$invalid && $v.form.itemPrice.$dirty, 'has-success': !$v.form.itemPrice.$invalid }"
+                                            v-model="form.itemPrice"
+                                            placeholder="Ex. Ruby Slipper"
+                                            maxlength="40"
+                                            required/>
+                                </div>
+                            </b-form-group>
+                        </b-col>
 
-                    <b-form-group>
-                        <label for="itemSize" class="label">Item Size</label>
-                        <b-form-input
-                                id="itemSize"
-                                v-model="form.itemSize"
-                                placeholder="Sm, Md, Lg, XL"
-                                maxlength="40"
-                                />
-                    </b-form-group>
+                        <b-col>
+                            <b-form-group>
+                                <label for="itemSize" class="label">Item Size</label>
+                                <b-form-input
+                                        id="itemSize"
+                                        v-model="form.itemSize"
+                                        placeholder="Sm, Md, Lg, XL"
+                                        maxlength="40"/>
+                            </b-form-group>
+                        </b-col>
+                    </b-row>
 
-                    <b-form-group id="imageGroup" label-for="imageFinReq" class="box">
+                    <b-form-group id="imageGroup" label-for="itemImage" class="box">
                         <label class="label">Image</label>
                         <b-form-file
-                                id="imageFinReq"
+                                id="itemImage"
                                 accept="image/*"
                                 v-model="form.image"
                                 placeholder="Choose an image..."
                                 @change="onImageChange"/>
 
-                        <b-col cols="6" offset="3" style="margin-top: 1rem;">
-                            <img v-if="url" :src="url" width="200" alt="uploaded image">
+                        <b-col cols="2" offset="5" style="margin-top: 1rem;">
+                            <img v-if="form.url" :src="form.url" width="200" alt="uploaded image">
                         </b-col>
                     </b-form-group>
+
+                    <b-form-group>
+                        <label for="numberAvailable" class="label">Number Available</label>
+                        <b-form-input
+                                id="numberAvailable"
+                                v-model="form.numberAvailable"
+                                placeholder="Please enter the number available"
+                                maxlength="40"
+                                />
+                    </b-form-group>
+
+                    <b-col cols="2" offset="5">
+                        <button 
+                                type="primary" 
+                                round 
+                                block
+                                :disabled="$v.form.$dirty"
+                                @click.prevent.native="addItem">
+                                Add Item</button>
+
+                    </b-col>
+
                 </b-form>
             </b-col>
         </b-row>
@@ -86,8 +119,8 @@
                     itemName: '',
                     itemDescription: '',
                     itemPrice: 0,
-                    itemSize: null,
-                    number_available: 0,
+                    itemSize: '',
+                    numberAvailable: 0,
                     image: null,
                     url: null,
                     sent: false,
@@ -118,9 +151,6 @@
                 itemPrice: {
                     required,
                 },
-                itemPrice: {
-                  
-                },
                 number_available: {
                     required
                 },
@@ -128,7 +158,7 @@
         },
 
         methods: {
-            requestCarePackage() {
+            addItem() {
 
                 this.$v.form.$touch();
 
@@ -139,18 +169,18 @@
                         formData.append(key, this.form[key])
                     })
 
-                    this.$store.dispatch('cpFormSubmit');
+                    this.$store.dispatch('formSubmit');
                     
                     axios.post("/api/items", formData, {headers: {'Content-Type': 'multipart/form-data'}}).then(({data}) => {
 
-                        this.$store.dispatch('cpFormSuccess')
+                        this.$store.dispatch('formSuccess')
 
                     }).catch((error) => {
 
                             if (error.response.status === 400) {
                 
                             }
-                            this.$store.dispatch('cpFormError')
+                            this.$store.dispatch('formError')
                     })
                 }
             },
@@ -177,7 +207,7 @@
                 })
             },
 
-            onFileChange(e) {
+            onImageChange(e) {
                 const file = e.target.files[0];
                 this.form.url = URL.createObjectURL(file);
 
