@@ -1,4 +1,4 @@
-# Laravel Vue Auth Boilerplate
+# Roller Derby sounds like a code name.
 
 ## Local Setup (Docker Optional)
 ```
@@ -64,8 +64,16 @@ DB_PASSWORD={ YOUR PASSWORD }
 
 For Docker you should match these values to the variables you use in the MySQL environment variables from your `docker-compose.yml`
 
-
 run the migrations, seed db with admin, add passport tables (this gives you client (vue) token):
+
+Locally:
+```
+php artisan migrate
+php artisan db:seed
+php artisan passport:install
+```
+
+Or from Docker Box:
 ```
 docker-compose exec php php artisan migrate
 docker-compose exec php php artisan db:seed
@@ -82,12 +90,18 @@ PASSPORT_CLIENT_SECRET={ THE 'SECRET' OF LARAVEL PASSWORD GRANT CLIENT }
 
 Once you've updated these values you can then run:
 
+Locally:
+```
+npm run live
+```
+
+Or from your Docker box:
 ```
 docker-compose exec php npm run live
 ```
 
 This will first run through some compilation processes and then you'll be ready to run.
 
-The project will be running on `localhost:8088`
+The project will be running on `localhost:8088`   OR (if you used local setup) `localhost:8000`
 
 You will need to get a user name from the database. Use the username and 'password' to login, you'll be taken to dashboard and adopt your next dog or cat from your local shelter or rescue group, please and thank you.

@@ -1,22 +1,21 @@
 <template>
     <b-container>
         <b-row>
-            <b-col v-for="item in items" :key='item.id' cols="4">
+            <b-col v-for="item in items" :key='item.id' cols="3">
                 <b-card
-                    
                     :title="item.name"
-                    img-src="https://picsum.photos/600/300/?image=25"
+                    :img-src="item.image"
                     img-alt="Image"
                     img-top
                     tag="article"
                     style="max-width: 20rem; height: 30rem;"
                     class="mb-2">
                     <b-card-text>
-                    {{ item.description }}, 
-                    {{ item.price }}
+                        <p>
+                            ${{ item.price }}
+                        </p>
                     </b-card-text>
-
-                    <b-button href="#" variant="primary" style="position: absolute; bottom: 0;">Add to cart</b-button>
+                    <b-button href="#">Add to cart</b-button>
                 </b-card>
             </b-col>
         </b-row>
