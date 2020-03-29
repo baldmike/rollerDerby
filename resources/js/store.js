@@ -75,9 +75,7 @@ export default new Vuex.Store({
         logout( { commit }) {
         
             axios.post("/api/logout").then((userData) => {        
-                
                 commit('logout');
-
                 router.push({ path: '/' });
             })
         },

@@ -11,15 +11,10 @@ export default class Auth {
 
     setAuthToken(token) {
         let tokenIsSet = axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-        console.log("[auth.js]-setAuthToken: " + tokenIsSet)
     }
 
     // completes the login
     login(token, user) {
-
-        let userData = JSON.stringify(user)
-
-        console.log("[auth.js->login()  -- userData ----> " + userData);
 
         store.dispatch('setLoginCred', {
             token: token,
@@ -36,9 +31,7 @@ export default class Auth {
     logout(router) {
 
         axios.call("post", "/api/logout").then(() => {
-
             this.$store.commit('logout');
-
             router.push({ name: 'login' });
 
         })

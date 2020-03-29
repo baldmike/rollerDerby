@@ -75749,14 +75749,11 @@ function () {
     key: "setAuthToken",
     value: function setAuthToken(token) {
       var tokenIsSet = axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
-      console.log("[auth.js]-setAuthToken: " + tokenIsSet);
     } // completes the login
 
   }, {
     key: "login",
     value: function login(token, user) {
-      var userData = JSON.stringify(user);
-      console.log("[auth.js->login()  -- userData ----> " + userData);
       _store__WEBPACK_IMPORTED_MODULE_1__["default"].dispatch('setLoginCred', {
         token: token,
         user: user
