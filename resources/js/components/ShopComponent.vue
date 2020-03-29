@@ -1,7 +1,7 @@
 <template>
     <b-container>
         <b-row>
-            <b-col v-for="item in items" :key='item.id' cols="4">
+            <b-col v-for="item in items" :key='item.id' cols="3">
                 <b-card
                     :title="item.name"
                     :img-src="item.image"
@@ -12,11 +12,10 @@
                     class="mb-2">
                     <b-card-text>
                         <p>
-                            {{ item.description }}, {{ item.price }}
+                            ${{ item.price }}
                         </p>
                     </b-card-text>
-
-                    <b-button href="#" variant="primary" style="position: absolute; bottom: 0;">Add to cart</b-button>
+                    <b-button href="#">Add to cart</b-button>
                 </b-card>
             </b-col>
         </b-row>

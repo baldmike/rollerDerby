@@ -1903,7 +1903,9 @@ var zip = vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["helpers"].regex
       this.form.itemName = '';
       this.form.itemDescription = '';
       this.form.itemSize = '';
-      this.form.itemPrice = 0;
+      this.form.itemPrice = null;
+      this.form.numberAvailable = null;
+      this.form.image = null;
       /* reset/clear native browser form validation state */
 
       this.show = false;
@@ -2191,7 +2193,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-//
 //
 //
 //
@@ -51989,7 +51990,7 @@ var render = function() {
         _vm._l(_vm.items, function(item) {
           return _c(
             "b-col",
-            { key: item.id, attrs: { cols: "4" } },
+            { key: item.id, attrs: { cols: "3" } },
             [
               _c(
                 "b-card",
@@ -52008,23 +52009,16 @@ var render = function() {
                   _c("b-card-text", [
                     _c("p", [
                       _vm._v(
-                        "\n                        " +
-                          _vm._s(item.description) +
-                          ", " +
+                        "\n                        $" +
                           _vm._s(item.price) +
                           "\n                    "
                       )
                     ])
                   ]),
                   _vm._v(" "),
-                  _c(
-                    "b-button",
-                    {
-                      staticStyle: { position: "absolute", bottom: "0" },
-                      attrs: { href: "#", variant: "primary" }
-                    },
-                    [_vm._v("Add to cart")]
-                  )
+                  _c("b-button", { attrs: { href: "#" } }, [
+                    _vm._v("Add to cart")
+                  ])
                 ],
                 1
               )

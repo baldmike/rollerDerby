@@ -191,7 +191,9 @@
                 this.form.itemName = ''
                 this.form.itemDescription = ''
                 this.form.itemSize = ''
-                this.form.itemPrice = 0
+                this.form.itemPrice = null
+                this.form.numberAvailable = null
+                this.form.image = null
                 
 
                 /* reset/clear native browser form validation state */
