@@ -2090,6 +2090,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NavBar",
@@ -2136,12 +2140,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -51743,6 +51741,18 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "b-navbar-nav",
+                [
+                  _vm.isAuthenticated
+                    ? _c("b-nav-item", { attrs: { to: "add-item" } }, [
+                        _vm._v("Add Item")
+                      ])
+                    : _vm._e()
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "b-navbar-nav",
                 { staticClass: "ml-auto" },
                 [
                   _vm.isAuthenticated && _vm.currentUser
@@ -51866,22 +51876,6 @@ var render = function() {
             1
           )
         }),
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "b-row",
-        [
-          _c(
-            "b-col",
-            [
-              _c("router-link", { attrs: { to: "add-item" } }, [
-                _vm._v("Add an Item")
-              ])
-            ],
-            1
-          )
-        ],
         1
       )
     ],
@@ -76585,8 +76579,6 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_cookie__WEBPACK_IMPORTED_MODU
   state: function state() {
     var userToken = vue__WEBPACK_IMPORTED_MODULE_0___default.a.cookie.get('token');
     var user = vue__WEBPACK_IMPORTED_MODULE_0___default.a.cookie.get('user'); // let currentUser = JSON.stringify(user);
-    // console.log("[STORE.STATE] --> user: " + (currentUser));
-    // console.log("[STORE.STATE] --> token: " + (userToken));
 
     return {
       token: userToken ? userToken : null,

@@ -20,12 +20,6 @@
                 </b-card>
             </b-col>
         </b-row>
-
-        <b-row>
-            <b-col>
-                <router-link to="add-item">Add an Item</router-link>
-            </b-col>
-        </b-row>
     </b-container>
 </template>
 
