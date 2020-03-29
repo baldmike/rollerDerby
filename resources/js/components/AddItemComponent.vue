@@ -5,9 +5,11 @@
                 <b-form>
                     <h6 v-if="$v.form.$dirty">Fields marked with a red <span style="color: red;">X</span> are required</h6>
 
+                    <h2 class="center">Add a New Item to the Store</h2>
+
                     <b-form-group>
                         <label for="itemName" class="label">Item Name</label>
-                        <input
+                        <b-form-input
                                 id="itemName"
                                 :class="{ 'has-danger': $v.form.itemName.$invalid && $v.form.itemName.$dirty, 'has-success': !$v.form.itemName.$invalid }"
                                 v-model="form.itemName"
@@ -18,7 +20,7 @@
 
                     <b-form-group>
                         <label for="itemDescription" class="label">Item Description</label>
-                        <input
+                        <b-form-input
                                 id="itemDescription"
                                 :class="{ 'has-danger': $v.form.itemDescription.$invalid && $v.form.itemDescription.$dirty, 'has-success': !$v.form.itemDescription.$invalid }"
                                 v-model="form.itemDescription"
@@ -29,7 +31,7 @@
 
                     <b-form-group>
                         <label for="ItemPrice" class="label">Item Price</label>
-                        <input
+                        <b-form-input
                                 id="itemPrice"
                                 :class="{ 'has-danger': $v.form.itemPrice.$invalid && $v.form.itemPrice.$dirty, 'has-success': !$v.form.itemPrice.$invalid }"
                                 v-model="form.itemPrice"
@@ -39,14 +41,27 @@
                     </b-form-group>
 
                     <b-form-group>
-                        <label for="itemDescription" class="label">Item Price</label>
-                        <input
-                                id="itemDescription"
-                                :class="{ 'has-danger': $v.form.itemPrice.$invalid && $v.form.itemPrice.$dirty, 'has-success': !$v.form.itemPrice.$invalid }"
-                                v-model="form.itemPrice"
-                                placeholder="Ex. Ruby Slipper"
+                        <label for="itemSize" class="label">Item Size</label>
+                        <b-form-input
+                                id="itemSize"
+                                v-model="form.itemSize"
+                                placeholder="Sm, Md, Lg, XL"
                                 maxlength="40"
-                                required/>
+                                />
+                    </b-form-group>
+
+                    <b-form-group id="imageGroup" label-for="imageFinReq" class="box">
+                        <label class="label">Image</label>
+                        <b-form-file
+                                id="imageFinReq"
+                                accept="image/*"
+                                v-model="form.image"
+                                placeholder="Choose an image..."
+                                @change="onImageChange"/>
+
+                        <b-col cols="6" offset="3" style="margin-top: 1rem;">
+                            <img v-if="url" :src="url" width="200" alt="uploaded image">
+                        </b-col>
                     </b-form-group>
                 </b-form>
             </b-col>
@@ -102,6 +117,9 @@
                 },
                 itemPrice: {
                     required,
+                },
+                itemPrice: {
+                  
                 },
                 number_available: {
                     required
