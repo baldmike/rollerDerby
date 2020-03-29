@@ -51998,7 +51998,7 @@ var render = function() {
                   staticStyle: { "max-width": "20rem", height: "30rem" },
                   attrs: {
                     title: item.name,
-                    "img-src": "https://picsum.photos/600/300/?image=25",
+                    "img-src": item.image,
                     "img-alt": "Image",
                     "img-top": "",
                     tag: "article"
@@ -52006,13 +52006,15 @@ var render = function() {
                 },
                 [
                   _c("b-card-text", [
-                    _vm._v(
-                      "\n                " +
-                        _vm._s(item.description) +
-                        ", \n                " +
-                        _vm._s(item.price) +
-                        "\n                "
-                    )
+                    _c("p", [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(item.description) +
+                          ", " +
+                          _vm._s(item.price) +
+                          "\n                    "
+                      )
+                    ])
                   ]),
                   _vm._v(" "),
                   _c(

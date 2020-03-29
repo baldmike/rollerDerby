@@ -53,8 +53,8 @@ class ItemsController extends Controller
         {
             $path = Storage::putFile('public/images', $request->file('image'), 'public');
 
-            // $path includes 'public/', and we don't want that in our URL, so we chop it off:
-            $path = substr($path, 6);
+            // $path includes 'public/', and we don't want that in our URL, but we want 'storage' - so we chop it off and add it:
+            $path = "/storage" . substr($path, 6);
 
             $item->image = $path;
         }
