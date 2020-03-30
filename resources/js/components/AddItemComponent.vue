@@ -160,7 +160,6 @@
         methods: {
             addItem() {
 
-                console.log("Inside addItem #############")
                 this.$v.form.$touch();
 
                 if (this.$v.form.$invalid) {
