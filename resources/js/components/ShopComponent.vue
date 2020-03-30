@@ -5,6 +5,8 @@
                 <b-card
                     :title="item.name"
                     :img-src="item.image"
+                    @click="showSelectedItemModal(item)" 
+                    item="'item.id'"
                     img-alt="Image"
                     img-top
                     tag="article"
@@ -19,6 +21,15 @@
                 </b-card>
             </b-col>
         </b-row>
+
+         <!-- Show Animal Modal Component -->
+            <b-modal ref="selectedItemModal" :item="'item'" ok-only ok-title="Close" ok-variant="dark" no-close-on-backdrop>
+                <b-row>
+                    <b-col>
+                        <h3 class="headline">{{ selectedItem.name }}</h3>
+                    </b-col>
+                </b-row>
+            </b-modal>
     </b-container>
 </template>
 
@@ -35,6 +46,7 @@
         data() {
             return {
                 items: [],
+                selectedItem: '',
             }
         },
 
@@ -42,6 +54,13 @@
         methods: {
             init() {
                 
+            },
+            showSelectedItemModal(item) {
+                this.selectedItem = item;
+                this.$refs.selectedItemModal.show();
+            },
+            hideModal () {
+                this.$refs.selectedItemModal.hide();
             },
         },
         created() {

@@ -2216,18 +2216,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'dashboard',
   components: {},
   data: function data() {
     return {
-      items: []
+      items: [],
+      selectedItem: ''
     };
   },
   computed: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])(['isAuthenticated', 'currentUser']),
   methods: {
-    init: function init() {}
+    init: function init() {},
+    showSelectedItemModal: function showSelectedItemModal(item) {
+      this.selectedItem = item;
+      this.$refs.selectedItemModal.show();
+    },
+    hideModal: function hideModal() {
+      this.$refs.selectedItemModal.hide();
+    }
   },
   created: function created() {
     var _this = this;
@@ -51997,9 +52016,15 @@ var render = function() {
                   attrs: {
                     title: item.name,
                     "img-src": item.image,
+                    item: "'item.id'",
                     "img-alt": "Image",
                     "img-top": "",
                     tag: "article"
+                  },
+                  on: {
+                    click: function($event) {
+                      return _vm.showSelectedItemModal(item)
+                    }
                   }
                 },
                 [
@@ -52023,6 +52048,34 @@ var render = function() {
             1
           )
         }),
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "b-modal",
+        {
+          ref: "selectedItemModal",
+          attrs: {
+            item: "item",
+            "ok-only": "",
+            "ok-title": "Close",
+            "ok-variant": "dark",
+            "no-close-on-backdrop": ""
+          }
+        },
+        [
+          _c(
+            "b-row",
+            [
+              _c("b-col", [
+                _c("h3", { staticClass: "headline" }, [
+                  _vm._v(_vm._s(_vm.selectedItem.name))
+                ])
+              ])
+            ],
+            1
+          )
+        ],
         1
       )
     ],
@@ -76730,7 +76783,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_cookie__WEBPACK_IMPORTED_MODU
     return {
       token: userToken ? userToken : null,
       user: user ? user : null,
-      currentUser: null
+      currentUser: null,
+      cart: []
     };
   },
   getters: {

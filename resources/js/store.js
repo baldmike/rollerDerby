@@ -21,6 +21,7 @@ export default new Vuex.Store({
             token: userToken ? userToken : null,
             user: user ? user : null,
             currentUser: null,
+            cart: []
         }
     },
     getters: { 
