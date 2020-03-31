@@ -1827,6 +1827,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 var zip = vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["helpers"].regex('zip', /(^\d{5}$)|(^\d{5}-\d{4}$)/);
@@ -2192,6 +2205,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+//
+//
+//
 //
 //
 //
@@ -51393,73 +51409,95 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c(
-                    "b-form-group",
+                    "b-row",
                     [
                       _c(
-                        "label",
-                        { staticClass: "label", attrs: { for: "itemName" } },
-                        [_vm._v("Item Name")]
+                        "b-col",
+                        [
+                          _c(
+                            "b-form-group",
+                            [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "label",
+                                  attrs: { for: "itemName" }
+                                },
+                                [_vm._v("Item Name")]
+                              ),
+                              _vm._v(" "),
+                              _c("b-form-input", {
+                                class: {
+                                  "has-danger":
+                                    _vm.$v.form.itemName.$invalid &&
+                                    _vm.$v.form.itemName.$dirty,
+                                  "has-success": !_vm.$v.form.itemName.$invalid
+                                },
+                                attrs: {
+                                  id: "itemName",
+                                  placeholder: "Ex. Ruby Slipper",
+                                  maxlength: "40",
+                                  required: ""
+                                },
+                                model: {
+                                  value: _vm.form.itemName,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "itemName", $$v)
+                                  },
+                                  expression: "form.itemName"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
                       ),
                       _vm._v(" "),
-                      _c("b-form-input", {
-                        class: {
-                          "has-danger":
-                            _vm.$v.form.itemName.$invalid &&
-                            _vm.$v.form.itemName.$dirty,
-                          "has-success": !_vm.$v.form.itemName.$invalid
-                        },
-                        attrs: {
-                          id: "itemName",
-                          placeholder: "Ex. Ruby Slipper",
-                          maxlength: "40",
-                          required: ""
-                        },
-                        model: {
-                          value: _vm.form.itemName,
-                          callback: function($$v) {
-                            _vm.$set(_vm.form, "itemName", $$v)
-                          },
-                          expression: "form.itemName"
-                        }
-                      })
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "b-form-group",
-                    [
                       _c(
-                        "label",
-                        {
-                          staticClass: "label",
-                          attrs: { for: "itemDescription" }
-                        },
-                        [_vm._v("Item Description")]
-                      ),
-                      _vm._v(" "),
-                      _c("b-form-textarea", {
-                        class: {
-                          "has-danger":
-                            _vm.$v.form.itemDescription.$invalid &&
-                            _vm.$v.form.itemDescription.$dirty,
-                          "has-success": !_vm.$v.form.itemDescription.$invalid
-                        },
-                        attrs: {
-                          id: "itemDescription",
-                          placeholder: "Description",
-                          rows: "4",
-                          "max-rows": "10",
-                          required: ""
-                        },
-                        model: {
-                          value: _vm.form.itemDescription,
-                          callback: function($$v) {
-                            _vm.$set(_vm.form, "itemDescription", $$v)
-                          },
-                          expression: "form.itemDescription"
-                        }
-                      })
+                        "b-col",
+                        [
+                          _c(
+                            "b-form-group",
+                            [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "label",
+                                  attrs: { for: "itemDescription" }
+                                },
+                                [_vm._v("Item Description")]
+                              ),
+                              _vm._v(" "),
+                              _c("b-form-textarea", {
+                                class: {
+                                  "has-danger":
+                                    _vm.$v.form.itemDescription.$invalid &&
+                                    _vm.$v.form.itemDescription.$dirty,
+                                  "has-success": !_vm.$v.form.itemDescription
+                                    .$invalid
+                                },
+                                attrs: {
+                                  id: "itemDescription",
+                                  placeholder: "Description",
+                                  rows: "4",
+                                  "max-rows": "10",
+                                  required: ""
+                                },
+                                model: {
+                                  value: _vm.form.itemDescription,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "itemDescription", $$v)
+                                  },
+                                  expression: "form.itemDescription"
+                                }
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
                     ],
                     1
                   ),
@@ -51564,102 +51602,136 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _c(
-                    "b-form-group",
-                    {
-                      staticClass: "box",
-                      attrs: { id: "imageGroup", "label-for": "itemImage" }
-                    },
+                    "b-row",
                     [
-                      _c("label", { staticClass: "label" }, [_vm._v("Image")]),
-                      _vm._v(" "),
-                      _c("b-form-file", {
-                        attrs: {
-                          id: "itemImage",
-                          accept: "image/*",
-                          placeholder: "Choose an image..."
-                        },
-                        on: { change: _vm.onImageChange },
-                        model: {
-                          value: _vm.form.image,
-                          callback: function($$v) {
-                            _vm.$set(_vm.form, "image", $$v)
-                          },
-                          expression: "form.image"
-                        }
-                      }),
+                      _c(
+                        "b-col",
+                        [
+                          _c(
+                            "b-form-group",
+                            {
+                              staticClass: "box",
+                              attrs: {
+                                id: "imageGroup",
+                                "label-for": "itemImage"
+                              }
+                            },
+                            [
+                              _c("label", { staticClass: "label" }, [
+                                _vm._v("Image")
+                              ]),
+                              _vm._v(" "),
+                              _c("b-form-file", {
+                                attrs: {
+                                  id: "itemImage",
+                                  accept: "image/*",
+                                  placeholder: "Choose an image..."
+                                },
+                                on: { change: _vm.onImageChange },
+                                model: {
+                                  value: _vm.form.image,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "image", $$v)
+                                  },
+                                  expression: "form.image"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "b-col",
+                                {
+                                  staticStyle: { "margin-top": "1rem" },
+                                  attrs: { cols: "2", offset: "5" }
+                                },
+                                [
+                                  _vm.form.url
+                                    ? _c("img", {
+                                        attrs: {
+                                          src: _vm.form.url,
+                                          width: "200",
+                                          alt: "uploaded image"
+                                        }
+                                      })
+                                    : _vm._e()
+                                ]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
                       _vm._v(" "),
                       _c(
                         "b-col",
-                        {
-                          staticStyle: { "margin-top": "1rem" },
-                          attrs: { cols: "2", offset: "5" }
-                        },
                         [
-                          _vm.form.url
-                            ? _c("img", {
+                          _c(
+                            "b-form-group",
+                            [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "label",
+                                  attrs: { for: "numberAvailable" }
+                                },
+                                [_vm._v("Number Available")]
+                              ),
+                              _vm._v(" "),
+                              _c("b-form-input", {
                                 attrs: {
-                                  src: _vm.form.url,
-                                  width: "200",
-                                  alt: "uploaded image"
+                                  id: "numberAvailable",
+                                  placeholder:
+                                    "Please enter the number available",
+                                  maxlength: "40"
+                                },
+                                model: {
+                                  value: _vm.form.numberAvailable,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.form, "numberAvailable", $$v)
+                                  },
+                                  expression: "form.numberAvailable"
                                 }
                               })
-                            : _vm._e()
-                        ]
+                            ],
+                            1
+                          )
+                        ],
+                        1
                       )
                     ],
                     1
                   ),
                   _vm._v(" "),
                   _c(
-                    "b-form-group",
+                    "b-row",
                     [
-                      _c(
-                        "label",
-                        {
-                          staticClass: "label",
-                          attrs: { for: "numberAvailable" }
-                        },
-                        [_vm._v("Number Available")]
-                      ),
-                      _vm._v(" "),
-                      _c("b-form-input", {
-                        attrs: {
-                          id: "numberAvailable",
-                          placeholder: "Please enter the number available",
-                          maxlength: "40"
-                        },
-                        model: {
-                          value: _vm.form.numberAvailable,
-                          callback: function($$v) {
-                            _vm.$set(_vm.form, "numberAvailable", $$v)
+                      _c("b-col", { attrs: { cols: "2", offset: "5" } }, [
+                        _c(
+                          "button",
+                          {
+                            attrs: {
+                              type: "primary",
+                              round: "",
+                              block: "",
+                              disabled: _vm.$v.form.$dirty
+                            },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.addItem($event)
+                              }
+                            }
                           },
-                          expression: "form.numberAvailable"
-                        }
-                      })
+                          [
+                            _vm._v(
+                              "\n                            Add Item\n                        "
+                            )
+                          ]
+                        )
+                      ])
                     ],
                     1
-                  ),
-                  _vm._v(" "),
-                  _c("b-col", { attrs: { cols: "2", offset: "5" } }, [
-                    _c(
-                      "button",
-                      {
-                        attrs: {
-                          type: "primary",
-                          round: "",
-                          block: "",
-                          disabled: _vm.$v.form.$dirty
-                        },
-                        on: {
-                          click: function($event) {
-                            $event.preventDefault()
-                            return _vm.addItem($event)
-                          }
-                        }
-                      },
-                      [_vm._v("\n                            Add Item")]
-                    )
-                  ])
+                  )
                 ],
                 1
               )
@@ -52059,7 +52131,7 @@ var render = function() {
             item: "item",
             "ok-only": "",
             "ok-title": "Close",
-            "ok-variant": "dark",
+            "ok-variant": "light",
             "no-close-on-backdrop": ""
           }
         },
@@ -52071,6 +52143,14 @@ var render = function() {
                 _c("h3", { staticClass: "headline" }, [
                   _vm._v(_vm._s(_vm.selectedItem.name))
                 ])
+              ]),
+              _vm._v(" "),
+              _c("b-col", [
+                _vm._v(
+                  "\n                    $" +
+                    _vm._s(_vm.selectedItem.price) +
+                    "\n                "
+                )
               ])
             ],
             1

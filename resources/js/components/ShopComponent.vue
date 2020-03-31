@@ -5,7 +5,7 @@
                 <b-card
                     :title="item.name"
                     :img-src="item.image"
-                    @click="showSelectedItemModal(item)" 
+                    @click="showSelectedItemModal(item)"
                     item="'item.id'"
                     img-alt="Image"
                     img-top
@@ -23,10 +23,13 @@
         </b-row>
 
          <!-- Show Animal Modal Component -->
-            <b-modal ref="selectedItemModal" :item="'item'" ok-only ok-title="Close" ok-variant="dark" no-close-on-backdrop>
+            <b-modal ref="selectedItemModal" :item="'item'" ok-only ok-title="Close" ok-variant="light" no-close-on-backdrop>
                 <b-row>
                     <b-col>
                         <h3 class="headline">{{ selectedItem.name }}</h3>
+                    </b-col>
+                    <b-col>
+                        ${{ selectedItem.price}}
                     </b-col>
                 </b-row>
             </b-modal>

@@ -7,28 +7,34 @@
 
                     <h2 class="center">Add a New Item to the Store</h2>
 
-                    <b-form-group>
-                        <label for="itemName" class="label">Item Name</label>
-                        <b-form-input
-                                id="itemName"
-                                :class="{ 'has-danger': $v.form.itemName.$invalid && $v.form.itemName.$dirty, 'has-success': !$v.form.itemName.$invalid }"
-                                v-model="form.itemName"
-                                placeholder="Ex. Ruby Slipper"
-                                maxlength="40"
-                                required/>
-                    </b-form-group>
+                    <b-row>
+                        <b-col>
+                            <b-form-group>
+                                <label for="itemName" class="label">Item Name</label>
+                                <b-form-input
+                                        id="itemName"
+                                        :class="{ 'has-danger': $v.form.itemName.$invalid && $v.form.itemName.$dirty, 'has-success': !$v.form.itemName.$invalid }"
+                                        v-model="form.itemName"
+                                        placeholder="Ex. Ruby Slipper"
+                                        maxlength="40"
+                                        required/>
+                            </b-form-group>
+                        </b-col>
 
-                    <b-form-group>
-                        <label for="itemDescription" class="label">Item Description</label>
-                        <b-form-textarea
-                                id="itemDescription"
-                                :class="{ 'has-danger': $v.form.itemDescription.$invalid && $v.form.itemDescription.$dirty, 'has-success': !$v.form.itemDescription.$invalid }"
-                                v-model="form.itemDescription"
-                                placeholder="Description"
-                                rows="4"
-                                max-rows="10"
-                                required/>
-                    </b-form-group>
+                        <b-col>
+                            <b-form-group>
+                                <label for="itemDescription" class="label">Item Description</label>
+                                <b-form-textarea
+                                        id="itemDescription"
+                                        :class="{ 'has-danger': $v.form.itemDescription.$invalid && $v.form.itemDescription.$dirty, 'has-success': !$v.form.itemDescription.$invalid }"
+                                        v-model="form.itemDescription"
+                                        placeholder="Description"
+                                        rows="4"
+                                        max-rows="10"
+                                        required/>
+                            </b-form-group>
+                        </b-col>
+                    </b-row>
 
                     <b-row>
                         <b-col>
@@ -61,40 +67,47 @@
                         </b-col>
                     </b-row>
 
-                    <b-form-group id="imageGroup" label-for="itemImage" class="box">
-                        <label class="label">Image</label>
-                        <b-form-file
-                                id="itemImage"
-                                accept="image/*"
-                                v-model="form.image"
-                                placeholder="Choose an image..."
-                                @change="onImageChange"/>
+                    <b-row>
+                        <b-col>
+                            <b-form-group id="imageGroup" label-for="itemImage" class="box">
+                                <label class="label">Image</label>
+                                <b-form-file
+                                        id="itemImage"
+                                        accept="image/*"
+                                        v-model="form.image"
+                                        placeholder="Choose an image..."
+                                        @change="onImageChange"/>
 
-                        <b-col cols="2" offset="5" style="margin-top: 1rem;">
-                            <img v-if="form.url" :src="form.url" width="200" alt="uploaded image">
+                                <b-col cols="2" offset="5" style="margin-top: 1rem;">
+                                    <img v-if="form.url" :src="form.url" width="200" alt="uploaded image">
+                                </b-col>
+                            </b-form-group>
                         </b-col>
-                    </b-form-group>
+                        <b-col>
+                            <b-form-group>
+                                <label for="numberAvailable" class="label">Number Available</label>
+                                <b-form-input
+                                        id="numberAvailable"
+                                        v-model="form.numberAvailable"
+                                        placeholder="Please enter the number available"
+                                        maxlength="40"
+                                        />
+                            </b-form-group>
+                        </b-col>
+                    </b-row>
 
-                    <b-form-group>
-                        <label for="numberAvailable" class="label">Number Available</label>
-                        <b-form-input
-                                id="numberAvailable"
-                                v-model="form.numberAvailable"
-                                placeholder="Please enter the number available"
-                                maxlength="40"
-                                />
-                    </b-form-group>
-
-                    <b-col cols="2" offset="5">
-                        <button 
+                    <b-row>
+                        <b-col cols="2" offset="5">
+                            <button 
                                 type="primary" 
                                 round 
                                 block
                                 :disabled="$v.form.$dirty"
                                 @click.prevent="addItem">
-                                Add Item</button>
-
-                    </b-col>
+                                Add Item
+                            </button>
+                        </b-col>
+                    </b-row>    
 
                 </b-form>
             </b-col>
