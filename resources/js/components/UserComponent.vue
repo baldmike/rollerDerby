@@ -5,12 +5,6 @@
                 <b-table striped hover :items="users" :fields="fields"></b-table>
             </b-col>
         </b-row>
-
-        <b-row>
-            <b-col v-if="currentUser">
-                <router-link v-if="currentUser.role==='admin'" to="add-item">Add Item</router-link>
-            </b-col>
-        </b-row>
     </b-container>
 </template>
 
@@ -64,7 +58,7 @@
                 this.users = response.data.data;
             });
 
-            // this.$store.dispatch('refreshUserData');
+            this.$store.dispatch('refreshUserData');
         }
     }
 </script>

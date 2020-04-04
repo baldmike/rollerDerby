@@ -15,7 +15,6 @@
                                         id="itemName"
                                         :class="{ 'has-danger': $v.form.itemName.$invalid && $v.form.itemName.$dirty, 'has-success': !$v.form.itemName.$invalid }"
                                         v-model="form.itemName"
-                                        placeholder="Ex. Ruby Slipper"
                                         maxlength="40"
                                         required/>
                             </b-form-group>
@@ -28,7 +27,6 @@
                                         id="itemDescription"
                                         :class="{ 'has-danger': $v.form.itemDescription.$invalid && $v.form.itemDescription.$dirty, 'has-success': !$v.form.itemDescription.$invalid }"
                                         v-model="form.itemDescription"
-                                        placeholder="Description"
                                         rows="4"
                                         max-rows="10"
                                         required/>
@@ -48,7 +46,6 @@
                                             type="number"
                                             :class="{ 'has-danger': $v.form.itemPrice.$invalid && $v.form.itemPrice.$dirty, 'has-success': !$v.form.itemPrice.$invalid }"
                                             v-model="form.itemPrice"
-                                            placeholder="Ex. Ruby Slipper"
                                             maxlength="40"
                                             required/>
                                 </div>
@@ -61,7 +58,6 @@
                                 <b-form-input
                                         id="itemSize"
                                         v-model="form.itemSize"
-                                        placeholder="Sm, Md, Lg, XL"
                                         maxlength="40"/>
                             </b-form-group>
                         </b-col>
@@ -89,7 +85,6 @@
                                 <b-form-input
                                         id="numberAvailable"
                                         v-model="form.numberAvailable"
-                                        placeholder="Please enter the number available"
                                         maxlength="40"
                                         />
                             </b-form-group>
@@ -108,7 +103,6 @@
                             </button>
                         </b-col>
                     </b-row>    
-
                 </b-form>
             </b-col>
         </b-row>

@@ -1834,12 +1834,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 var zip = vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["helpers"].regex('zip', /(^\d{5}$)|(^\d{5}-\d{4}$)/);
@@ -2302,12 +2296,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'dashboard',
@@ -2344,7 +2332,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     axios.get('/api/users').then(function (response) {
       _this.users = response.data.data;
-    }); // this.$store.dispatch('refreshUserData');
+    });
+    this.$store.dispatch('refreshUserData');
   }
 });
 
@@ -51435,7 +51424,6 @@ var render = function() {
                                 },
                                 attrs: {
                                   id: "itemName",
-                                  placeholder: "Ex. Ruby Slipper",
                                   maxlength: "40",
                                   required: ""
                                 },
@@ -51479,7 +51467,6 @@ var render = function() {
                                 },
                                 attrs: {
                                   id: "itemDescription",
-                                  placeholder: "Description",
                                   rows: "4",
                                   "max-rows": "10",
                                   required: ""
@@ -51542,7 +51529,6 @@ var render = function() {
                                   attrs: {
                                     id: "itemPrice",
                                     type: "number",
-                                    placeholder: "Ex. Ruby Slipper",
                                     maxlength: "40",
                                     required: ""
                                   },
@@ -51578,11 +51564,7 @@ var render = function() {
                               ),
                               _vm._v(" "),
                               _c("b-form-input", {
-                                attrs: {
-                                  id: "itemSize",
-                                  placeholder: "Sm, Md, Lg, XL",
-                                  maxlength: "40"
-                                },
+                                attrs: { id: "itemSize", maxlength: "40" },
                                 model: {
                                   value: _vm.form.itemSize,
                                   callback: function($$v) {
@@ -51680,8 +51662,6 @@ var render = function() {
                               _c("b-form-input", {
                                 attrs: {
                                   id: "numberAvailable",
-                                  placeholder:
-                                    "Please enter the number available",
                                   maxlength: "40"
                                 },
                                 model: {
@@ -52202,26 +52182,6 @@ var render = function() {
                       fields: _vm.fields
                     }
                   })
-                ],
-                1
-              )
-            : _vm._e()
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "b-row",
-        [
-          _vm.currentUser
-            ? _c(
-                "b-col",
-                [
-                  _vm.currentUser.role === "admin"
-                    ? _c("router-link", { attrs: { to: "add-item" } }, [
-                        _vm._v("Add Item")
-                      ])
-                    : _vm._e()
                 ],
                 1
               )
