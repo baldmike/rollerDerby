@@ -27,9 +27,11 @@
                 <b-row>
                     <b-col>
                         <h3 class="headline">{{ selectedItem.name }}</h3>
+                        <h6>{{ selectedItem.description }}</h6>
                     </b-col>
                     <b-col>
                         ${{ selectedItem.price}}
+                        <b-button href="#">Add to cart</b-button>
                     </b-col>
                 </b-row>
             </b-modal>
