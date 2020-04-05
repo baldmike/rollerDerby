@@ -68,10 +68,10 @@ export default new Vuex.Store({
                 context.commit('setUser', user)
             })
         },
-        logout( { commit }) {
-        
+        logout(context) {
+
             axios.post("/api/logout").then((userData) => {        
-                commit('logout');
+                context.commit('logout');
                 router.push({ path: '/' });
             })
         },

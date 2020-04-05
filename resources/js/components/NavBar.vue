@@ -39,11 +39,15 @@
             }
         },
         
-        computed: mapGetters(['isAuthenticated', 'currentUser']),
+        computed: {
+            currentRoute() {
+                console.log(this.$route.name);
+                return this.$route.name;
+            },...mapGetters(['isAuthenticated', 'currentUser'])
+        },
             
-        routeName() {
-            console.log("ROUTE: " + this.$route.name)
-            return this.$route.name;
+        created() {
+            this.$store.dispatch('refreshUserData');
         }
             
     }

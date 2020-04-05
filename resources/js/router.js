@@ -40,6 +40,15 @@ export const router = new VueRouter({
                 {
                     path: 'users',
                     component: UserComponent,
+                    beforeEnter: (to, from, next) => {
+                        if (!window.auth.check()) {
+                            next({
+                                path: '/'
+                            });
+                            return;
+                        }
+                        next();
+                    }
                 },
 
                 {
