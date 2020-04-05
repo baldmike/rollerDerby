@@ -1,5 +1,5 @@
 <template>
-    <b-container>
+    <b-container-fluid>
         <b-row>
             <b-col v-for="item in items" :key='item.id' cols="3">
                 <b-card
@@ -35,7 +35,7 @@
                     </b-col>
                 </b-row>
             </b-modal>
-    </b-container>
+    </b-container-fluid>
 </template>
 
 <script>
